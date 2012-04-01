@@ -15,10 +15,8 @@ public class Main {
     public static void main(String[] args) {
         // Testing mobile creation
         Player m = new Player(1,2,3);
-        System.out.print(m.getId());
-        System.out.print(m.getX());
-        System.out.print(m.getY());
-        System.out.println("");
+        m.setName("derp");
+        System.out.println(m);
 
     }
 
