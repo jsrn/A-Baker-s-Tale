@@ -1,6 +1,5 @@
 package abakerstale;
 
-import mobiles.Humanoid;
 import mobiles.Player;
 
 /**
