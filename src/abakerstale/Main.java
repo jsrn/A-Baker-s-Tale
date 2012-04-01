@@ -17,7 +17,5 @@ public class Main {
         m.setName("derp");
         System.out.println(m);
         m.listBodyParts();
-
     }
-
 }
