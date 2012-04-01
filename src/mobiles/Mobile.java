@@ -5,8 +5,9 @@ package mobiles;
  */
 public class Mobile {
 
-    private int id, x, y;
+    private int id, x, y, hp, mp, stam;
     private String name;
+    private boolean blessed, alive;
 
     public Mobile() {
     }
@@ -15,6 +16,24 @@ public class Mobile {
         this.id = id;
         this.x = x;
         this.y = y;
+    }
+
+    public void damage(int damage){
+        if(!blessed){
+            hp -= damage;
+        }
+
+        if(hp < 0){
+            die();
+        }
+    }
+
+    public boolean isBlessed() {
+        return blessed;
+    }
+
+    public void setBlessed(boolean blessed) {
+        this.blessed = blessed;
     }
 
     public void setName(String name) {
@@ -33,8 +52,28 @@ public class Mobile {
         return y;
     }
 
+    public void goNorth(int steps){
+        y += Math.abs(steps);
+    }
+
+    public void goSouth(int steps){
+        y -= Math.abs(steps);
+    }
+
+    public void goEast(int steps){
+        x += Math.abs(steps);
+    }
+
+    public void goWest(int steps){
+        x -= Math.abs(steps);
+    }
+
     @Override
     public String toString() {
         return "id: " + id + "\nname: " + name + "\nx: " + x + "\ny: " + y;
+    }
+
+    private void die(){
+        alive = false;
     }
 }
