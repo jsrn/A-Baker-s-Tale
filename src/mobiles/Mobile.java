@@ -2,6 +2,8 @@ package mobiles;
 
 import java.util.Iterator;
 import java.util.LinkedList;
+import playerstuff.Inventory;
+import playerstuff.Item;
 
 /**The base clase for mobiles. Contains methods for the most simple stuff like
  * ids, location, etc, etc.
@@ -12,6 +14,7 @@ public class Mobile {
     private String name;
     private boolean blessed, alive;
     private LinkedList<String> bodyparts = new LinkedList();
+    private Inventory inventory = new Inventory();
 
     public Mobile() {
     }
@@ -70,6 +73,14 @@ public class Mobile {
 
     public void goWest(int steps) {
         x -= Math.abs(steps);
+    }
+
+    public void giveItem(String item, int quantity){
+        inventory.addItem(item, quantity);
+    }
+
+    public void listInventory(){
+        inventory.listItems();
     }
 
     @Override
