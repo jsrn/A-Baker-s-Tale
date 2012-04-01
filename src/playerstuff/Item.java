@@ -23,6 +23,6 @@ public class Item {
     }
 
     public void addQuantity(int quantity){
-        quantity += Math.abs(quantity);
+        this.quantity += Math.abs(quantity);
     }
 }
