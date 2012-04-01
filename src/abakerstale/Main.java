@@ -16,6 +16,7 @@ public class Main {
         Player m = new Player(1,2,3);
         m.setName("derp");
         System.out.println(m);
+        m.listBodyParts();
 
     }
 

@@ -1,5 +1,6 @@
 package mobiles;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 
 /**The base clase for mobiles. Contains methods for the most simple stuff like
@@ -21,12 +22,12 @@ public class Mobile {
         this.y = y;
     }
 
-    public void damage(int damage){
-        if(!blessed){
+    public void damage(int damage) {
+        if (!blessed) {
             hp -= damage;
         }
 
-        if(hp < 0){
+        if (hp < 0) {
             die();
         }
     }
@@ -55,19 +56,19 @@ public class Mobile {
         return y;
     }
 
-    public void goNorth(int steps){
+    public void goNorth(int steps) {
         y += Math.abs(steps);
     }
 
-    public void goSouth(int steps){
+    public void goSouth(int steps) {
         y -= Math.abs(steps);
     }
 
-    public void goEast(int steps){
+    public void goEast(int steps) {
         x += Math.abs(steps);
     }
 
-    public void goWest(int steps){
+    public void goWest(int steps) {
         x -= Math.abs(steps);
     }
 
@@ -76,7 +77,20 @@ public class Mobile {
         return "id: " + id + "\nname: " + name + "\nx: " + x + "\ny: " + y;
     }
 
-    private void die(){
+    public void addBodyParts(LinkedList<String> bodyparts) {
+        this.bodyparts = bodyparts;
+    }
+
+    public void listBodyParts(){
+        String parts = "";
+        for (Iterator<String> it = bodyparts.iterator(); it.hasNext();) {
+            String part = it.next();
+            parts += part + "\n";
+        }
+        System.out.println(parts);
+    }
+
+    private void die() {
         alive = false;
     }
 }
