@@ -1,5 +1,7 @@
 package mobiles;
 
+import java.util.LinkedList;
+
 /**The base clase for mobiles. Contains methods for the most simple stuff like
  * ids, location, etc, etc.
  */
@@ -8,6 +10,7 @@ public class Mobile {
     private int id, x, y, hp, mp, stam;
     private String name;
     private boolean blessed, alive;
+    private LinkedList<String> bodyparts = new LinkedList();
 
     public Mobile() {
     }
