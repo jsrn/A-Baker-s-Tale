@@ -25,4 +25,11 @@ public class Item {
     public void addQuantity(int quantity){
         this.quantity += Math.abs(quantity);
     }
+
+    public void subtractQuantity(int quantity){
+        this.quantity -= Math.abs(quantity);
+        if(this.quantity < 0){
+            this.quantity = 0;
+        }
+    }
 }
