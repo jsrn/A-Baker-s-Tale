@@ -2,6 +2,7 @@ package world;
 
 import java.util.LinkedList;
 import mobiles.Mobile;
+import mobiles.Player;
 
 /**The world is made of cells. Each cell contains important data about itself.
  * The cell class is extended by different types of cell.
@@ -27,5 +28,9 @@ public class Cell {
 
     public void addMobile(Mobile m) {
         inhabitants.add(m);
+    }
+
+    void removeInhabitant(Mobile m) {
+        inhabitants.remove(m);
     }
 }

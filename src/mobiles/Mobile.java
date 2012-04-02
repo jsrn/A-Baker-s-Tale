@@ -68,11 +68,11 @@ public class Mobile {
     }
 
     public void goNorth(int steps) {
-        y += Math.abs(steps);
+        y -= Math.abs(steps);
     }
 
     public void goSouth(int steps) {
-        y -= Math.abs(steps);
+        y += Math.abs(steps);
     }
 
     public void goEast(int steps) {

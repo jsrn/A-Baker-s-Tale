@@ -20,15 +20,13 @@ import world.World;
  */
 public class GameTest extends javax.swing.JFrame {
 
+    private World world;
+
     /** Creates new form GameTest */
     public GameTest() {
         initComponents();
 
-        World world = new World(15);
-        
-
-        Player p = new Player(1, 0, 0);
-        world.addMobile(p, p.getX(), p.getY());
+        world = new World(15);
 
         gameArea.setText(world.toString());
     }
@@ -80,14 +78,19 @@ public class GameTest extends javax.swing.JFrame {
         int keycode = evt.getKeyCode();
         switch(keycode){
             case 38: // up
+                world.movePlayerNorth(1);
                 break;
             case 40: // down
+                world.movePlayerSouth(1);
                 break;
             case 37: // left
+                world.movePlayerWest(1);
                 break;
             case 39: // right
+                world.movePlayerEast(1);
                 break;
         }
+        gameArea.setText(world.toString());
     }//GEN-LAST:event_gameAreaKeyPressed
 
     /**
