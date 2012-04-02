@@ -11,6 +11,9 @@
 
 package gui;
 
+import mobiles.Player;
+import world.World;
+
 /**
  *
  * @author James
@@ -20,6 +23,14 @@ public class GameTest extends javax.swing.JFrame {
     /** Creates new form GameTest */
     public GameTest() {
         initComponents();
+
+        World world = new World(15);
+        
+
+        Player p = new Player(1, 0, 0);
+        world.addMobile(p, p.getX(), p.getY());
+
+        gameArea.setText(world.toString());
     }
 
     /** This method is called from within the constructor to
@@ -31,21 +42,53 @@ public class GameTest extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        gameArea = new javax.swing.JTextArea();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        gameArea.setColumns(20);
+        gameArea.setRows(5);
+        gameArea.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                gameAreaKeyPressed(evt);
+            }
+        });
+        jScrollPane1.setViewportView(gameArea);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 482, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void gameAreaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gameAreaKeyPressed
+        int keycode = evt.getKeyCode();
+        switch(keycode){
+            case 38: // up
+                break;
+            case 40: // down
+                break;
+            case 37: // left
+                break;
+            case 39: // right
+                break;
+        }
+    }//GEN-LAST:event_gameAreaKeyPressed
 
     /**
     * @param args the command line arguments
@@ -59,6 +102,8 @@ public class GameTest extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea gameArea;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
 }
