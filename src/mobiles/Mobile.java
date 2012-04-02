@@ -11,7 +11,7 @@ import playerstuff.Item;
 public class Mobile {
 
     private int id, x, y, hp, mp, stam;
-    private String name;
+    private String name, rep;
     private boolean blessed, alive;
     private LinkedList<String> bodyparts = new LinkedList();
     private Inventory inventory = new Inventory();
@@ -37,6 +37,14 @@ public class Mobile {
 
     public boolean isBlessed() {
         return blessed;
+    }
+
+    public String getRep(){
+        return rep;
+    }
+
+    public void setRep(String r){
+        rep = r;
     }
 
     public void setBlessed(boolean blessed) {
