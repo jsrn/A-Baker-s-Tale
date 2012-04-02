@@ -4,15 +4,13 @@
  */
 package gui;
 
-import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
+import world.Cell;
 import world.World;
 
 /**
@@ -22,6 +20,8 @@ import world.World;
 public class GamePanel extends JPanel {
 
     BufferedImage image;
+    
+
     World world;
     int tilewidth;
 
@@ -31,6 +31,7 @@ public class GamePanel extends JPanel {
 
         try {
             image = ImageIO.read(new File("src/art/tiles/grass1.png"));
+            
         } catch (IOException ex) {
             System.out.println("Failed loading image.");
         }
@@ -38,9 +39,15 @@ public class GamePanel extends JPanel {
 
     @Override
     public void paintComponent(Graphics g) {
-        for (int i = 0; i < world.getWorldSize(); i++) {
-            for (int j = 0; j < world.getWorldSize(); j++) {
-                g.drawImage(image, i*tilewidth, j*tilewidth, null); // see javadoc for more info on the parameters
+        Cell [][] cells = world.getCells();
+        for (int i = 0; i < world.getWorldHeight(); i++) {
+            for (int j = 0; j < world.getWorldWidth(); j++) {
+
+                g.drawImage(image, j*tilewidth, i*tilewidth, null); // see javadoc for more info on the parameters
+
+                if(cells[j][i].hasPlayer()){
+                    g.drawImage(world.getPlayer().getImage(), j*tilewidth, i*tilewidth, null);
+                }
             }
         }
     }
