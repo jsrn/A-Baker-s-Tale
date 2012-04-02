@@ -25,11 +25,19 @@ public class World {
         addMobile(p, p.getX(), p.getY());
 
         addItem(new Item("a",1),0,0);
-        addItem(new Item("a",1),14,5);
+        addItem(new Item("a",1),3,4);
     }
 
     public void addItem(Item i, int x, int y){
         cells[y][x].addItem(i);
+    }
+
+    public Cell [] [] getCells(){
+        return cells;
+    }
+
+    public int getWorldSize(){
+        return worldsize;
     }
 
     public void addMobile(Mobile m, int x, int y) {
