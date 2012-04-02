@@ -44,6 +44,7 @@ public class GameTest extends javax.swing.JFrame {
         gameArea = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("A Baker's Tale");
 
         gameArea.setColumns(20);
         gameArea.setRows(5);
