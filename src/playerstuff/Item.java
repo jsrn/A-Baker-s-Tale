@@ -8,14 +8,20 @@ public class Item {
 
     private String name;
     private int quantity = 0;
+    private String rep;
 
     public Item(String name, int quantity){
         this.name = name;
         this.quantity = quantity;
+        rep = "i";
     }
 
     public String getName(){
         return name;
+    }
+
+    public String getRep(){
+        return rep;
     }
 
     public int getQuantity(){
