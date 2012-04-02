@@ -3,10 +3,6 @@ package playerstuff;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-/**
- *
- * @author James
- */
 public class Inventory {
 
     private LinkedList<Item> items = new LinkedList();
