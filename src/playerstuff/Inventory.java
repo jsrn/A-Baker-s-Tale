@@ -59,7 +59,7 @@ public class Inventory {
         if (itemToChange != null) {
             if (quantity == -1) { // Drop all the items
                 items.remove(index);
-            } else {// drop $quantity items
+            } else { // drop $quantity items
                 itemToChange.subtractQuantity(quantity);
                 items.set(index, itemToChange);
             }
