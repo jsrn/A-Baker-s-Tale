@@ -2,6 +2,7 @@ package world;
 
 import mobiles.Mobile;
 import mobiles.Player;
+import playerstuff.Item;
 
 public class World {
 
@@ -22,10 +23,17 @@ public class World {
         // Player init
         p = new Player(1, 0, 0);
         addMobile(p, p.getX(), p.getY());
+
+        addItem(new Item("a",1),0,0);
+        addItem(new Item("a",1),14,5);
+    }
+
+    public void addItem(Item i, int x, int y){
+        cells[y][x].addItem(i);
     }
 
     public void addMobile(Mobile m, int x, int y) {
-        cells[x][y].addMobile(m);
+        cells[y][x].addMobile(m);
     }
 
     @Override
