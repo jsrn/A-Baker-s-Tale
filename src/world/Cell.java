@@ -11,8 +11,21 @@ public class Cell {
     private int x, y;
     private boolean passable;
     private LinkedList<Mobile> inhabitants;
+    private String rep = "_";
 
-    public Cell(){
-        
+    public Cell() {
+        inhabitants = new LinkedList();
+    }
+
+    public String getRep() {
+        if (inhabitants.isEmpty()) {
+            return rep;
+        } else {
+            return inhabitants.getFirst().getRep();
+        }
+    }
+
+    public void addMobile(Mobile m) {
+        inhabitants.add(m);
     }
 }
