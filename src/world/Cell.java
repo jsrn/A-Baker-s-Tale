@@ -1,5 +1,6 @@
 package world;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import mobiles.Mobile;
 import mobiles.Player;
@@ -19,6 +20,16 @@ public class Cell {
     public Cell() {
         inhabitants = new LinkedList();
         items = new LinkedList();
+    }
+
+    public boolean hasPlayer(){
+        for (Iterator<Mobile> it = inhabitants.iterator(); it.hasNext();) {
+            Mobile mobile = it.next();
+            if(mobile instanceof Player){
+                return true;
+            }
+        }
+        return false;
     }
 
     public String getRep() {

@@ -1,17 +1,13 @@
 package gui;
 
-import java.awt.BasicStroke;
-import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Stroke;
 import world.World;
+import abakerstale.Constants;
 
 public class GameScreen extends javax.swing.JFrame {
 
     private World world;
     private int tilewidth = 25;
-
     // Interface parts
     GamePanel gamePanel;
 
@@ -26,43 +22,51 @@ public class GameScreen extends javax.swing.JFrame {
     private void gamePanelKeyPressed(java.awt.event.KeyEvent evt) {
 
         int keycode = evt.getKeyCode();
-        System.out.println(keycode);
+        
         switch (keycode) {
-            case 38: // up
+            case Constants.UP: // up
                 world.movePlayerNorth(1);
                 break;
-            case 40: // down
+            case Constants.DOWN: // down
                 world.movePlayerSouth(1);
                 break;
-            case 37: // left
+            case Constants.LEFT: // left
                 world.movePlayerWest(1);
                 break;
-            case 39: // right
+            case Constants.RIGHT: // right
                 world.movePlayerEast(1);
+                break;
+            case Constants.I:
+                // Open inventory
+                System.out.println("Opening inventory");
+                break;
+            default:
+                System.out.println("Unregistered keycode: " + keycode);
                 break;
         }
         repaint();
     }
 
     @Override
-    public void paint(Graphics g){
-        Graphics2D g2d = (Graphics2D)g;
-        // Paint game border
+    public void paint(Graphics g) {
+        //Paint game border
         gamePanel.repaint();
-        g2d.setColor(Color.black);
-        g2d.setStroke(new BasicStroke(2));
-        g2d.drawLine(510, 0, 510, 400);
+        //inventoryPanel.repaint();
     }
 
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("A Baker's Tale");
-        setSize(700, 400);
+        setSize(500, 400);
         setResizable(false);
+        setLayout(null);
         gamePanel = new GamePanel(world, tilewidth);
         gamePanel.setFocusable(true);
+        gamePanel.setBounds(0, 0, 700, 400);
+
         add(gamePanel);
+
         setVisible(true);
 
         // Set up key listener for player input

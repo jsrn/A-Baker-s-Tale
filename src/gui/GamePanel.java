@@ -4,7 +4,9 @@
  */
 package gui;
 
+import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -39,6 +41,16 @@ public class GamePanel extends JPanel {
 
     @Override
     public void paintComponent(Graphics g) {
+        paintGameScreen(g);
+
+        paintInventory(g);
+
+        Graphics2D g2d = (Graphics2D)g;
+        g2d.setColor(Color.black);
+        g2d.drawLine(500, 0, 500, 400);
+    }
+
+    private void paintGameScreen(Graphics g){
         Cell [][] cells = world.getCells();
         for (int i = 0; i < world.getWorldHeight(); i++) {
             for (int j = 0; j < world.getWorldWidth(); j++) {
@@ -50,5 +62,9 @@ public class GamePanel extends JPanel {
                 }
             }
         }
+    }
+
+    private void paintInventory(Graphics g){
+       
     }
 }

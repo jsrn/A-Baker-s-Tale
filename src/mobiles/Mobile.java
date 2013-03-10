@@ -10,6 +10,7 @@ import playerstuff.Item;
  */
 public class Mobile {
 
+    private int direction = 3; // 1 = n, 2 = e, 3 = s, 4 = w
     private int id, x, y, hp, mp, stam;
     private String name, rep;
     private boolean blessed, alive;
@@ -23,6 +24,10 @@ public class Mobile {
         this.id = id;
         this.x = x;
         this.y = y;
+    }
+
+    public int getDirection(){
+        return direction;
     }
 
     public void damage(int damage) {
@@ -68,18 +73,26 @@ public class Mobile {
     }
 
     public void goNorth(int steps) {
+        direction = 1;
         y -= Math.abs(steps);
     }
 
+    public void setDirection(int d){
+        direction = d;
+    }
+
     public void goSouth(int steps) {
+        direction = 3;
         y += Math.abs(steps);
     }
 
     public void goEast(int steps) {
+        direction = 2;
         x += Math.abs(steps);
     }
 
     public void goWest(int steps) {
+        direction = 4;
         x -= Math.abs(steps);
     }
 

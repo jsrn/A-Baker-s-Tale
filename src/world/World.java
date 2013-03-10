@@ -7,15 +7,16 @@ import playerstuff.Item;
 public class World {
 
     Player p;
-    private int worldsize;
+    private int worldwidth, worldheight;
     private Cell[][] cells;
 
-    public World(int w) {
+    public World(int w, int h) {
         // Set up world
-        worldsize = w;
-        cells = new Cell[worldsize][worldsize];
-        for (int i = 0; i < worldsize; i++) {
-            for (int j = 0; j < worldsize; j++) {
+        worldwidth = w;
+        worldheight = h;
+        cells = new Cell[worldwidth][worldheight];
+        for (int i = 0; i < worldwidth; i++) {
+            for (int j = 0; j < worldheight; j++) {
                 cells[i][j] = new Cell();
             }
         }
@@ -36,55 +37,55 @@ public class World {
         return cells;
     }
 
-    public int getWorldSize(){
-        return worldsize;
+    public int getWorldWidth(){
+        return worldwidth;
+    }
+
+    public int getWorldHeight(){
+        return worldheight;
     }
 
     public void addMobile(Mobile m, int x, int y) {
         cells[y][x].addMobile(m);
     }
 
-    @Override
-    public String toString() {
-        String rep = "";
-        for (int i = 0; i < worldsize; i++) {
-            for (int j = 0; j < worldsize; j++) {
-                rep += cells[i][j].getRep();
-            }
-            rep += "\n";
+    public void movePlayerNorth(int i) {
+        p.setDirection(1);
+        if (p.getY() > 0) {
+            cells[p.getX()][p.getY()].removeInhabitant(p);
+            p.goNorth(i);
+            cells[p.getX()][p.getY()].addMobile(p);
         }
-        return rep;
     }
 
-    public void movePlayerNorth(int i) {
-        if (p.getY() > 0) {
-            cells[p.getY()][p.getX()].removeInhabitant(p);
-            p.goNorth(i);
-            cells[p.getY()][p.getX()].addMobile(p);
-        }
+    public Player getPlayer(){
+        return p;
     }
 
     public void movePlayerSouth(int i) {
-        if (p.getY() < worldsize -1) {
-            cells[p.getY()][p.getX()].removeInhabitant(p);
+        p.setDirection(3);
+        if (p.getY() < worldheight -1) {
+            cells[p.getX()][p.getY()].removeInhabitant(p);
             p.goSouth(i);
-            cells[p.getY()][p.getX()].addMobile(p);
+            cells[p.getX()][p.getY()].addMobile(p);
         }
     }
 
     public void movePlayerEast(int i) {
-        if (p.getX() < worldsize -1) {
-            cells[p.getY()][p.getX()].removeInhabitant(p);
+        p.setDirection(2);
+        if (p.getX() < worldwidth -1) {
+            cells[p.getX()][p.getY()].removeInhabitant(p);
             p.goEast(i);
-            cells[p.getY()][p.getX()].addMobile(p);
+            cells[p.getX()][p.getY()].addMobile(p);
         }
     }
 
     public void movePlayerWest(int i) {
+        p.setDirection(4);
         if (p.getX() > 0) {
-            cells[p.getY()][p.getX()].removeInhabitant(p);
+            cells[p.getX()][p.getY()].removeInhabitant(p);
             p.goWest(i);
-            cells[p.getY()][p.getX()].addMobile(p);
+            cells[p.getX()][p.getY()].addMobile(p);
         }
     }
 }
