@@ -2,7 +2,7 @@ package gui;
 
 import java.awt.Graphics;
 import world.World;
-import abakerstale.Constants;
+import abakerstale.*;
 
 public class GameScreen extends javax.swing.JFrame {
 
@@ -17,6 +17,15 @@ public class GameScreen extends javax.swing.JFrame {
         System.out.println(world);
         System.out.println(w);
         initComponents();
+    }
+    
+    public void openInventory(){
+        System.out.println("Opening inventory");
+        Globals.WINDOW_MODE = Constants.WINDOW_INVENTORY;
+    }
+    
+    public void closeInventory(){
+        Globals.WINDOW_MODE = Constants.WINDOW_NORMAL;
     }
 
     private void gamePanelKeyPressed(java.awt.event.KeyEvent evt) {
@@ -38,7 +47,7 @@ public class GameScreen extends javax.swing.JFrame {
                 break;
             case Constants.I:
                 // Open inventory
-                System.out.println("Opening inventory");
+                openInventory();
                 break;
             default:
                 System.out.println("Unregistered keycode: " + keycode);
@@ -51,7 +60,7 @@ public class GameScreen extends javax.swing.JFrame {
     public void paint(Graphics g) {
         //Paint game border
         gamePanel.repaint();
-        //inventoryPanel.repaint();
+        
     }
 
     private void initComponents() {

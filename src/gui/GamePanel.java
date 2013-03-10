@@ -14,6 +14,8 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import world.Cell;
 import world.World;
+import abakerstale.*;
+
 
 /**
  *
@@ -43,14 +45,21 @@ public class GamePanel extends JPanel {
     public void paintComponent(Graphics g) {
         paintGameScreen(g);
 
-        paintInventory(g);
-
         Graphics2D g2d = (Graphics2D)g;
         g2d.setColor(Color.black);
         g2d.drawLine(500, 0, 500, 400);
     }
 
     private void paintGameScreen(Graphics g){
+        paintWorld(g);
+        
+        // Inventory
+        if(Globals.WINDOW_MODE == Constants.WINDOW_INVENTORY){
+            paintInventory(g);
+        }
+    }
+    
+    private void paintWorld(Graphics g){
         Cell [][] cells = world.getCells();
         for (int i = 0; i < world.getWorldHeight(); i++) {
             for (int j = 0; j < world.getWorldWidth(); j++) {
@@ -65,6 +74,6 @@ public class GamePanel extends JPanel {
     }
 
     private void paintInventory(Graphics g){
-       
+       System.out.println("Drawing inventory");
     }
 }
