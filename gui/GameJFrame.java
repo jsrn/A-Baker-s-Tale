@@ -3,27 +3,29 @@ package gui;
 import abakerstale.Globals;
 import abakerstale.Constants;
 import java.awt.Graphics;
-import world.World;
+import javax.swing.JFrame;
 import world.Cell;
 
-public class GameJFrame extends javax.swing.JFrame {
+public class GameJFrame {
 
     private GamePanel gamePanel;
 
     public GameJFrame() {
+        
+        JFrame gameJFrame = new JFrame();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("A Baker's Tale");
-        setSize(500, 400);
-        setResizable(false);
-        setLayout(null);
+        gameJFrame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        gameJFrame.setTitle("A Baker's Tale");
+        gameJFrame.setSize(500, 400);
+        gameJFrame.setResizable(false);
+        gameJFrame.setLayout(null);
         gamePanel = new GamePanel();
         gamePanel.setFocusable(true);
         gamePanel.setBounds(0, 0, 500, 400);
 
-        add(gamePanel);
+        gameJFrame.add(gamePanel);
 
-        setVisible(true);
+        gameJFrame.setVisible(true);
 
         // Set up key listener for player input
         gamePanel.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -39,8 +41,8 @@ public class GameJFrame extends javax.swing.JFrame {
 
         int keycode = evt.getKeyCode();
         handleKeypress(keycode);
-
-        repaint();
+        gamePanel.repaint();
+        //repaint();
     }
 
     public void openInventory() {
@@ -137,10 +139,4 @@ public class GameJFrame extends javax.swing.JFrame {
         }
     }
 
-    @Override
-    public void paint(Graphics g) {
-        //Paint game border
-        gamePanel.repaint();
-
-    }
 }
