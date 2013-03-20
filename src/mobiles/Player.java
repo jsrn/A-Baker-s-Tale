@@ -4,10 +4,6 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import javax.imageio.ImageIO;
 
-/**
- *
- * @author James
- */
 public class Player extends Humanoid {
 
     BufferedImage playerN, playerE, playerS, playerW;
@@ -15,10 +11,10 @@ public class Player extends Humanoid {
     public Player(int id, int x, int y) {
         super(id, x, y);
         try {
-            playerN = ImageIO.read(new File("src/art/mobiles/player/player_north.png"));
-            playerE = ImageIO.read(new File("src/art/mobiles/player/player_east.png"));
-            playerS = ImageIO.read(new File("src/art/mobiles/player/player_south.png"));
-            playerW = ImageIO.read(new File("src/art/mobiles/player/player_west.png"));
+            playerN = ImageIO.read(new File("src/art/player_north1.png"));
+            playerE = ImageIO.read(new File("src/art/player_east1.png"));
+            playerS = ImageIO.read(new File("src/art/player_south1.png"));
+            playerW = ImageIO.read(new File("src/art/player_west1.png"));
         } catch (Exception e) {
             System.out.println("Problem loading player art.");
         }
@@ -38,4 +34,5 @@ public class Player extends Humanoid {
                 return playerS;
         }
     }
+        
 }

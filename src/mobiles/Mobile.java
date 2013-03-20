@@ -1,9 +1,9 @@
 package mobiles;
 
+import abakerstale.Globals;
 import java.util.Iterator;
 import java.util.LinkedList;
-import playerstuff.Inventory;
-import playerstuff.Item;
+import world.Cell;
 
 /**The base clase for mobiles. Contains methods for the most simple stuff like
  * ids, location, etc, etc.
@@ -15,7 +15,6 @@ public class Mobile {
     private String name, rep;
     private boolean blessed, alive;
     private LinkedList<String> bodyparts = new LinkedList();
-    private Inventory inventory = new Inventory();
 
     public Mobile() {
     }
@@ -26,7 +25,7 @@ public class Mobile {
         this.y = y;
     }
 
-    public int getDirection(){
+    public int getDirection() {
         return direction;
     }
 
@@ -44,11 +43,11 @@ public class Mobile {
         return blessed;
     }
 
-    public String getRep(){
+    public String getRep() {
         return rep;
     }
 
-    public void setRep(String r){
+    public void setRep(String r) {
         rep = r;
     }
 
@@ -74,34 +73,50 @@ public class Mobile {
 
     public void goNorth(int steps) {
         direction = 1;
-        y -= Math.abs(steps);
+        if (y > 0) {
+            Cell[][] cells = Globals.WORLD.getCurrentScreen().getCells();
+            int newY = y - Math.abs(steps);
+            if (cells[x][newY].isPassable()) {
+                y = newY;
+            }
+        }
     }
 
-    public void setDirection(int d){
+    public void setDirection(int d) {
         direction = d;
     }
 
     public void goSouth(int steps) {
         direction = 3;
-        y += Math.abs(steps);
+        if (y < 14) {
+            Cell[][] cells = Globals.WORLD.getCurrentScreen().getCells();
+            int newY = y + Math.abs(steps);
+            if (cells[x][newY].isPassable()) {
+                y = newY;
+            }
+        }
     }
 
     public void goEast(int steps) {
         direction = 2;
-        x += Math.abs(steps);
+        if (x < 19) {
+            Cell[][] cells = Globals.WORLD.getCurrentScreen().getCells();
+            int newX = x + Math.abs(steps);
+            if (cells[newX][y].isPassable()) {
+                x = newX;
+            }
+        }
     }
 
     public void goWest(int steps) {
         direction = 4;
-        x -= Math.abs(steps);
-    }
-
-    public void giveItem(String item, int quantity){
-        inventory.addItem(item, quantity);
-    }
-
-    public void listInventory(){
-        inventory.listItems();
+        if (x > 0) {
+            Cell[][] cells = Globals.WORLD.getCurrentScreen().getCells();
+            int newX = x - Math.abs(steps);
+            if (cells[newX][y].isPassable()) {
+                x = newX;
+            }
+        }
     }
 
     @Override
@@ -113,7 +128,7 @@ public class Mobile {
         this.bodyparts = bodyparts;
     }
 
-    public void listBodyParts(){
+    public void listBodyParts() {
         String parts = "";
         for (Iterator<String> it = bodyparts.iterator(); it.hasNext();) {
             String part = it.next();
