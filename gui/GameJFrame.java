@@ -70,15 +70,19 @@ public class GameJFrame {
     private void handleGameplayKeypress(int keycode) {
         switch (keycode) {
             case Constants.KEY_UP:
+                Globals.PLAYER.setDirection(Constants.DIRECTION_NORTH);
                 Globals.PLAYER.goNorth(1);
                 break;
             case Constants.KEY_DOWN:
+                Globals.PLAYER.setDirection(Constants.DIRECTION_SOUTH);
                 Globals.PLAYER.goSouth(1);
                 break;
             case Constants.KEY_LEFT:
+                Globals.PLAYER.setDirection(Constants.DIRECTION_WEST);
                 Globals.PLAYER.goWest(1);
                 break;
             case Constants.KEY_RIGHT:
+                Globals.PLAYER.setDirection(Constants.DIRECTION_EAST);
                 Globals.PLAYER.goEast(1);
                 break;
             case Constants.KEY_I:

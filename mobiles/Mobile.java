@@ -1,5 +1,6 @@
 package mobiles;
 
+import abakerstale.Constants;
 import abakerstale.Globals;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -15,6 +16,7 @@ public class Mobile {
     private String name, rep;
     private boolean blessed, alive;
     private LinkedList<String> bodyparts = new LinkedList();
+    private int lastStep = 1;
 
     public Mobile() {
     }
@@ -72,49 +74,52 @@ public class Mobile {
     }
 
     public void goNorth(int steps) {
-        direction = 1;
         if (y > 0) {
             Cell[][] cells = Globals.WORLD.getCurrentScreen().getCells();
             int newY = y - Math.abs(steps);
             if (cells[x][newY].isPassable()) {
                 y = newY;
+                step();
             }
         }
     }
 
     public void setDirection(int d) {
-        direction = d;
+        if(direction != d){
+            lastStep = 1;
+            direction = d;
+        }
     }
 
     public void goSouth(int steps) {
-        direction = 3;
         if (y < 14) {
             Cell[][] cells = Globals.WORLD.getCurrentScreen().getCells();
             int newY = y + Math.abs(steps);
             if (cells[x][newY].isPassable()) {
                 y = newY;
+                step();
             }
         }
     }
 
     public void goEast(int steps) {
-        direction = 2;
         if (x < 19) {
             Cell[][] cells = Globals.WORLD.getCurrentScreen().getCells();
             int newX = x + Math.abs(steps);
             if (cells[newX][y].isPassable()) {
                 x = newX;
+                step();
             }
         }
     }
 
     public void goWest(int steps) {
-        direction = 4;
         if (x > 0) {
             Cell[][] cells = Globals.WORLD.getCurrentScreen().getCells();
             int newX = x - Math.abs(steps);
             if (cells[newX][y].isPassable()) {
                 x = newX;
+                step();
             }
         }
     }
@@ -139,5 +144,19 @@ public class Mobile {
 
     private void die() {
         alive = false;
+    }
+    
+    public int getStep(){
+        return lastStep;
+    }
+    
+    private void step(){
+        
+        if(lastStep == 4){
+            lastStep = 1;
+        } else {
+            lastStep++;
+        }
+        System.out.println(lastStep);
     }
 }
