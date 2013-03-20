@@ -6,15 +6,20 @@ import javax.imageio.ImageIO;
 
 public class Player extends Humanoid {
 
-    BufferedImage playerN, playerE, playerS, playerW;
+    BufferedImage playerSprites;
+
+    int SOUTH_ROWHEIGHT = 0;
+    int EAST_ROWHEIGHT = 26;
+    int NORTH_ROWHEIGHT = 52;
+    int WEST_ROWHEIGHT = 78;
+    
+    int STEP1_OFFSET = 0;
+    int STEP2_OFFSET = 26;
 
     public Player(int id, int x, int y) {
         super(id, x, y);
         try {
-            playerN = ImageIO.read(new File("src/art/player_north1.png"));
-            playerE = ImageIO.read(new File("src/art/player_east1.png"));
-            playerS = ImageIO.read(new File("src/art/player_south1.png"));
-            playerW = ImageIO.read(new File("src/art/player_west1.png"));
+            playerSprites = ImageIO.read(new File("src/art/sprites_player.png"));
         } catch (Exception e) {
             System.out.println("Problem loading player art.");
         }
@@ -23,15 +28,15 @@ public class Player extends Humanoid {
     public BufferedImage getImage() {
         switch(getDirection()){
             case 1:
-                return playerN;
+                return playerSprites.getSubimage(STEP1_OFFSET, NORTH_ROWHEIGHT, 25, 25);
             case 2:
-                return playerE;
+                return playerSprites.getSubimage(STEP1_OFFSET, EAST_ROWHEIGHT, 25, 25);
             case 3:
-                return playerS;
+                return playerSprites.getSubimage(STEP1_OFFSET, SOUTH_ROWHEIGHT, 25, 25);
             case 4:
-                return playerW;
+                return playerSprites.getSubimage(STEP1_OFFSET, WEST_ROWHEIGHT, 25, 25);
             default:
-                return playerS;
+                return playerSprites.getSubimage(STEP1_OFFSET, SOUTH_ROWHEIGHT, 25, 25);
         }
     }
         
