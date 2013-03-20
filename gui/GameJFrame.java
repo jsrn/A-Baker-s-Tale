@@ -25,6 +25,7 @@ public class GameJFrame {
 
         gameJFrame.add(gamePanel);
 
+        gameJFrame.setLocationRelativeTo(null);
         gameJFrame.setVisible(true);
 
         // Set up key listener for player input
@@ -38,11 +39,9 @@ public class GameJFrame {
     }
 
     private void gamePanelKeyPressed(java.awt.event.KeyEvent evt) {
-
         int keycode = evt.getKeyCode();
         handleKeypress(keycode);
         gamePanel.repaint();
-        //repaint();
     }
 
     public void openInventory() {
