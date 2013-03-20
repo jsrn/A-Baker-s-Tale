@@ -12,6 +12,7 @@ public class Player extends Humanoid {
     int EAST_ROWHEIGHT = 26;
     int NORTH_ROWHEIGHT = 52;
     int WEST_ROWHEIGHT = 78;
+    
     int STEP1_OFFSET = 0;
     int STEP2_OFFSET = 26;
     int STEP3_OFFSET = 52;
@@ -36,12 +37,16 @@ public class Player extends Humanoid {
         switch (getDirection()) {
             case Constants.DIRECTION_NORTH:
                 offset = NORTH_ROWHEIGHT;
+                break;
             case Constants.DIRECTION_EAST:
-                return EAST_ROWHEIGHT;
+                offset = EAST_ROWHEIGHT;
+                break;
             case Constants.DIRECTION_SOUTH:
-                return SOUTH_ROWHEIGHT;
+                offset = SOUTH_ROWHEIGHT;
+                break;
             case Constants.DIRECTION_WEST:
-                return WEST_ROWHEIGHT;
+                offset = WEST_ROWHEIGHT;
+                break;
         }
 
         return offset;
