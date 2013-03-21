@@ -8,7 +8,8 @@ I started this project almost a year ago, but it didn't get far before being lef
 The end result should hopefully be a functioning top down RPG in the style of FF1-6.
 
 Current objectives:
-    - Walking animation/sprites for player character
-    - Map transitions
-    - Item interaction
-    - Event scripting
+
+Walking animation/sprites for player character
+- [ ] Map transitions
+- [ ] Item interaction
+- [ ] Event scripting
