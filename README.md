@@ -1,4 +1,5 @@
--- 20th March, 2013 --
+20th March, 2013
+----------------
 
 This is A Baker's Tale, my first real foray into game development. At the time of writing, it's safe to say I don't really have any idea what I'm doing. The codebase is going to be subjected to frequent, drastic changes as I learn new and better ways of doing things.
 
