@@ -17,16 +17,4 @@ public class Constants {
     public static final Color GUI_BACKGROUND = new Color(0, 0, 255, 180);
     public static final Color GUI_BORDER = new Color(255, 255, 255);
     public static final Color GUI_TEXT = new Color(255, 255, 255);
-    // Keycodes
-    // Util
-    public static final int KEY_ENTER = 10;
-    public static final int KEY_ESC = 27;
-    public static final int KEY_SPACE = 32;
-    // Directions
-    public static final int KEY_LEFT = 37;
-    public static final int KEY_UP = 38;
-    public static final int KEY_RIGHT = 39;
-    public static final int KEY_DOWN = 40;
-    // Letters
-    public static final int KEY_I = 73;
 }
