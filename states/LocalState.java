@@ -67,6 +67,7 @@ public class LocalState implements IState {
                 break;
             case Keys.ENTER:
                 playerAction();
+                Globals.pressedKeys[Keys.ENTER] = false;
                 break;
             default:
                 System.out.println("Unregistered keycode: " + keycode);
