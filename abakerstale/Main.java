@@ -2,6 +2,9 @@ package abakerstale;
 
 import gui.GamePanel;
 import javax.swing.JFrame;
+import states.InventoryState;
+import states.LocalState;
+import states.StateMachine;
 import world.Cell;
 import world.World;
 
@@ -9,6 +12,13 @@ public class Main {
 
     public Main() {
         Globals.WORLD = new World();
+        Globals.stateMachine = new StateMachine();
+        Globals.stateMachine.Add("localmap", new LocalState());
+        Globals.stateMachine.Add("inventorystate", new InventoryState());
+
+        Globals.stateMachine.Change("localmap");
+
+
         setUpGameFrame();
 
         while (true) {
@@ -32,6 +42,7 @@ public class Main {
     }
 
     private void displayGame() {
+        Globals.stateMachine.Render();
         Globals.gamePanel.repaint();
     }
 
@@ -67,6 +78,7 @@ public class Main {
                 Globals.PLAYER.goEast(1);
                 break;
             case Constants.KEY_I:
+                Globals.stateMachine.Change("inventorystate");
                 openInventory();
                 break;
             case Constants.KEY_SPACE:
