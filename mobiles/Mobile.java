@@ -1,5 +1,6 @@
 package mobiles;
 
+import abakerstale.Constants;
 import abakerstale.Globals;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -169,4 +170,28 @@ public class Mobile {
             lastStep++;
         }
     }
+    
+    public Cell getFacingCell(){
+        Cell[][] cells = Globals.WORLD.getCurrentScreen().getCells();
+
+        int newY = Globals.PLAYER.getY();
+        int newX = Globals.PLAYER.getX();
+        switch ( Globals.PLAYER.getDirection() ) {
+            case Constants.DIRECTION_NORTH:
+                newY = Globals.PLAYER.getY() - 1;
+                break;
+            case Constants.DIRECTION_SOUTH:
+                newY = Globals.PLAYER.getY() + 1;
+                break;
+            case Constants.DIRECTION_EAST:
+                newX = Globals.PLAYER.getX() + 1;
+                break;
+            case Constants.DIRECTION_WEST:
+                newX = Globals.PLAYER.getX() - 1;
+                break;
+        }
+
+        return cells[newX][newY];
+    }
+    
 }

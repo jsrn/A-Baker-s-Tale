@@ -4,7 +4,6 @@ import abakerstale.Constants;
 import abakerstale.Globals;
 import abakerstale.Keys;
 import gui.TextBox;
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.Iterator;
@@ -104,28 +103,10 @@ public class LocalState implements IState {
     }
 
     private void playerAction() {
-        Cell[][] cells = Globals.WORLD.getCurrentScreen().getCells();
-
-        int newY = Globals.PLAYER.getY();
-        int newX = Globals.PLAYER.getX();
-        switch ( Globals.PLAYER.getDirection() ) {
-            case Constants.DIRECTION_NORTH:
-                newY = Globals.PLAYER.getY() - 1;
-                break;
-            case Constants.DIRECTION_SOUTH:
-                newY = Globals.PLAYER.getY() + 1;
-                break;
-            case Constants.DIRECTION_EAST:
-                newX = Globals.PLAYER.getX() + 1;
-                break;
-            case Constants.DIRECTION_WEST:
-                newX = Globals.PLAYER.getX() - 1;
-                break;
-        }
-
-        Cell cell = cells[newX][newY];
-        if (cell.hasItem()) {
-            System.out.println("Interacting with: " + cell.getItem().toString());
+        Cell facingCell = Globals.PLAYER.getFacingCell();
+        
+        if (facingCell.hasItem()) {
+            System.out.println("Interacting with: " + facingCell.getItem().toString());
             AddTextBox(new TextBox("The quick brown fox"));
         }
 
