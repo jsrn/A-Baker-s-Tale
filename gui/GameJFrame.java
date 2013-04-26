@@ -23,16 +23,5 @@ public class GameJFrame {
         gameJFrame.setLocationRelativeTo(null);
         gameJFrame.setVisible(true);
 
-        // Set up key listener for player input
-        Globals.gamePanel.addKeyListener(new java.awt.event.KeyAdapter() {
-
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                Globals.pressedKeys[evt.getKeyCode()] = true;
-            }
-
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                Globals.pressedKeys[evt.getKeyCode()] = false;
-            }
-        });
     }
 }
