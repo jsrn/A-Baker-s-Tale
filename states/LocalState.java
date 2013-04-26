@@ -73,26 +73,22 @@ public class LocalState implements IState {
     }
 
     private void playerAction() {
-        System.out.println("Performing player action");
         Cell[][] cells = Globals.WORLD.getCurrentScreen().getCells();
-        int direction = Globals.PLAYER.getDirection();
-        int playerX = Globals.PLAYER.getX();
-        int playerY = Globals.PLAYER.getY();
 
-        int newY = playerY;
-        int newX = playerX;
-        switch (direction) {
+        int newY = Globals.PLAYER.getY();
+        int newX = Globals.PLAYER.getX();
+        switch ( Globals.PLAYER.getDirection() ) {
             case Constants.DIRECTION_NORTH:
-                newY = playerY - 1;
+                newY = Globals.PLAYER.getY() - 1;
                 break;
             case Constants.DIRECTION_SOUTH:
-                newY = playerY + 1;
+                newY = Globals.PLAYER.getY() + 1;
                 break;
             case Constants.DIRECTION_EAST:
-                newX = playerX + 1;
+                newX = Globals.PLAYER.getX() + 1;
                 break;
             case Constants.DIRECTION_WEST:
-                newX = playerX - 1;
+                newX = Globals.PLAYER.getX() - 1;
                 break;
         }
 
