@@ -1,5 +1,6 @@
 package abakerstale;
 
+import javax.swing.JPanel;
 import mobiles.Player;
 import world.World;
 
@@ -10,4 +11,6 @@ public class Globals {
     public static Player PLAYER;
     
     public static boolean [] pressedKeys = new boolean[255];
+    
+    public static JPanel gamePanel;
 }
