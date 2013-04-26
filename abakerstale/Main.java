@@ -1,6 +1,7 @@
 package abakerstale;
 
-import gui.GameJFrame;
+import gui.GamePanel;
+import javax.swing.JFrame;
 import world.Cell;
 import world.World;
 
@@ -8,7 +9,7 @@ public class Main {
 
     public Main() {
         Globals.WORLD = new World();
-        GameJFrame gameJFrame = new GameJFrame();
+        setUpGameFrame();
 
         while (true) {
             try {
@@ -130,6 +131,24 @@ public class Main {
     public void closeInventory() {
         System.out.println("Closing inventory");
         Globals.WINDOW_MODE = Constants.WINDOW_NORMAL;
+    }
+
+    private void setUpGameFrame() {
+        JFrame gameJFrame = new JFrame();
+
+        gameJFrame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        gameJFrame.setTitle("A Baker's Tale");
+        gameJFrame.setSize(500, 400);
+        gameJFrame.setResizable(false);
+        gameJFrame.setLayout(null);
+        Globals.gamePanel = new GamePanel();
+        Globals.gamePanel.setFocusable(true);
+        Globals.gamePanel.setBounds(0, 0, 500, 400);
+
+        gameJFrame.add(Globals.gamePanel);
+
+        gameJFrame.setLocationRelativeTo(null);
+        gameJFrame.setVisible(true);
     }
 
     public static void main(String[] args) {
