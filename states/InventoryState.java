@@ -2,6 +2,7 @@ package states;
 
 import abakerstale.Constants;
 import abakerstale.Globals;
+import abakerstale.Keys;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -31,7 +32,7 @@ public class InventoryState extends MenuState {
     @Override
     public void Keypress(int keycode) {
         switch (keycode) {
-            case Constants.KEY_ESC: // up
+            case Keys.ESC: // up
                 Globals.stateMachine.Change("localmap");
                 break;
             default:

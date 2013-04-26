@@ -2,6 +2,7 @@ package states;
 
 import abakerstale.Constants;
 import abakerstale.Globals;
+import abakerstale.Keys;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import world.Cell;
@@ -41,29 +42,30 @@ public class LocalState implements IState {
 
     public void Keypress(int keycode) {
         switch (keycode) {
-            case Constants.KEY_UP:
+            case Keys.UP:
                 Globals.PLAYER.setDirection(Constants.DIRECTION_NORTH);
                 Globals.PLAYER.goNorth(1);
                 break;
-            case Constants.KEY_DOWN:
+            case Keys.DOWN:
                 Globals.PLAYER.setDirection(Constants.DIRECTION_SOUTH);
                 Globals.PLAYER.goSouth(1);
                 break;
-            case Constants.KEY_LEFT:
+            case Keys.LEFT:
                 Globals.PLAYER.setDirection(Constants.DIRECTION_WEST);
                 Globals.PLAYER.goWest(1);
                 break;
-            case Constants.KEY_RIGHT:
+            case Keys.RIGHT:
                 Globals.PLAYER.setDirection(Constants.DIRECTION_EAST);
                 Globals.PLAYER.goEast(1);
                 break;
-            case Constants.KEY_I:
+            case Keys.I:
                 Globals.stateMachine.Change("inventorystate");
                 break;
-            case Constants.KEY_SPACE:
+            case Keys.SPACE:
                 playerAction();
+                Globals.pressedKeys[Keys.SPACE] = false;
                 break;
-            case Constants.KEY_ENTER:
+            case Keys.ENTER:
                 playerAction();
                 break;
             default:
