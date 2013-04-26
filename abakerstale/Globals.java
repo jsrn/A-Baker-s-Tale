@@ -6,7 +6,6 @@ import states.StateMachine;
 import world.World;
 
 public class Globals {
-    public static int WINDOW_MODE = Constants.WINDOW_NORMAL;
     
     public static World WORLD;
     public static Player PLAYER;
@@ -16,4 +15,5 @@ public class Globals {
     public static JPanel gamePanel;
     
     public static StateMachine stateMachine;
+    
 }
