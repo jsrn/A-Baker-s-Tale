@@ -1,5 +1,7 @@
 package states;
 
+import gui.TextBox;
+
 public interface IState {
     
     public abstract void Update(float elapsedTime);
@@ -11,5 +13,9 @@ public interface IState {
     public abstract void OnEnter();
     
     public abstract void OnExit();
+    
+    public abstract void AddTextBox(TextBox t);
+    
+    public abstract void RemoveTextBox(TextBox t);
     
 }

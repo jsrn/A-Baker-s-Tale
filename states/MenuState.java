@@ -1,5 +1,6 @@
 package states;
 
+import gui.TextBox;
 import java.awt.Color;
 
 public class MenuState implements IState {
@@ -21,6 +22,14 @@ public class MenuState implements IState {
     }
 
     public void Keypress(int keycode) {
+    }
+
+    public void AddTextBox(TextBox t) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public void RemoveTextBox(TextBox t) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
     
 }

@@ -3,11 +3,17 @@ package states;
 import abakerstale.Constants;
 import abakerstale.Globals;
 import abakerstale.Keys;
+import gui.TextBox;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import java.util.Iterator;
+import java.util.LinkedList;
 import world.Cell;
 
 public class LocalState implements IState {
+    
+    private LinkedList<TextBox> textBoxes = new LinkedList();
 
     public void Update(float elapsedTime) {
     }
@@ -30,6 +36,20 @@ public class LocalState implements IState {
                     frameGraphics.drawImage(Globals.PLAYER.getImage(), x * tilewidth, y * tilewidth, null);
                 }
             }
+        }
+        
+        for (Iterator<TextBox> it = textBoxes.iterator(); it.hasNext();) {
+            TextBox t = it.next();
+            
+            frameGraphics.setColor(Constants.GUI_BACKGROUND);
+            frameGraphics.fillRect(t.getX(), t.getY(), t.getWidth(), t.getHeight());
+            
+            frameGraphics.setColor(Constants.GUI_BORDER);
+            frameGraphics.drawRect(t.getX(), t.getY(), t.getWidth(), t.getHeight());
+            
+            frameGraphics.setColor(Constants.GUI_TEXT);
+            frameGraphics.drawString(t.getText(), t.getX() + 5, t.getY() + 15);
+            
         }
         Globals.gamePanel.getGraphics().drawImage(frame, 0, 0, null);
     }
@@ -62,16 +82,24 @@ public class LocalState implements IState {
                 Globals.stateMachine.Change("inventorystate");
                 break;
             case Keys.SPACE:
-                playerAction();
+                actionKeyPressed();
                 Globals.pressedKeys[Keys.SPACE] = false;
                 break;
             case Keys.ENTER:
-                playerAction();
+                actionKeyPressed();
                 Globals.pressedKeys[Keys.ENTER] = false;
                 break;
             default:
                 System.out.println("Unregistered keycode: " + keycode);
                 break;
+        }
+    }
+    
+    private void actionKeyPressed(){
+        if(!textBoxes.isEmpty()){
+            textBoxes.removeFirst();
+        } else {
+            playerAction();
         }
     }
 
@@ -98,7 +126,16 @@ public class LocalState implements IState {
         Cell cell = cells[newX][newY];
         if (cell.hasItem()) {
             System.out.println("Interacting with: " + cell.getItem().toString());
+            AddTextBox(new TextBox("The quick brown fox"));
         }
 
+    }
+
+    public void AddTextBox(TextBox t) {
+        textBoxes.add(t);
+    }
+
+    public void RemoveTextBox(TextBox t) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

@@ -36,4 +36,8 @@ public class StateMachine {
     public void Add(String name, IState state){
         mStates.put(name, state);
     }
+    
+    public void AddTextBox(String s){
+        mCurrentState.AddTextBox(s);
+    }
 }
