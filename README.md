@@ -3,6 +3,10 @@
 
 Revisiting this project after a few weeks away. I've implemented (ugly) spriting for player movement, and basic item interaction. Currently maps/items are stored in json format, so it's quite simple to load new layouts.
 
+For additional guidance through the project, I will be taking architectural pointers from this informative tutorial:
+
+http://hub.tutsplus.com/categories/game-design/articles/gamedev-6676-how-to-build-a-jrpg-a-primer-for-game-developers
+
 20th March, 2013
 ----------------
 
