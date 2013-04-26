@@ -12,11 +12,13 @@ import world.Cell;
 public class Mobile {
 
     private int direction = 3; // 1 = n, 2 = e, 3 = s, 4 = w
-    private int id, x, y, hp, mp, stam;
+    private double x, y;
+    private int id, hp, mp, stam;
     private String name, rep;
     private boolean blessed, alive;
     private LinkedList<String> bodyparts = new LinkedList();
     private int lastStep = 1;
+    private double speed = 0.2;
 
     public Mobile() {
     }
@@ -66,18 +68,23 @@ public class Mobile {
     }
 
     public int getX() {
-        return x;
+        return (int)Math.floor(x);
     }
 
     public int getY() {
-        return y;
+        return (int)Math.floor(y);
     }
 
     public void goNorth(int steps) {
         if (y > 0) {
             Cell[][] cells = Globals.WORLD.getCurrentScreen().getCells();
-            int newY = y - Math.abs(steps);
-            if (cells[x][newY].isPassable()) {
+            double newY = y - Math.abs(steps*speed);
+            
+            if(newY < 0){
+                newY = 0;
+            }
+            
+            if (cells[(int)Math.floor(x)][(int)Math.floor(newY)].isPassable()) {
                 y = newY;
                 step();
             }
@@ -94,8 +101,8 @@ public class Mobile {
     public void goSouth(int steps) {
         if (y < 14) {
             Cell[][] cells = Globals.WORLD.getCurrentScreen().getCells();
-            int newY = y + Math.abs(steps);
-            if (cells[x][newY].isPassable()) {
+            double newY = y + Math.abs(steps*speed);
+            if (cells[(int)Math.floor(x)][(int)Math.floor(newY)].isPassable()) {
                 y = newY;
                 step();
             }
@@ -105,8 +112,8 @@ public class Mobile {
     public void goEast(int steps) {
         if (x < 19) {
             Cell[][] cells = Globals.WORLD.getCurrentScreen().getCells();
-            int newX = x + Math.abs(steps);
-            if (cells[newX][y].isPassable()) {
+            double newX = x + Math.abs(steps*speed);
+            if (cells[(int)Math.floor(newX)][(int)Math.floor(y)].isPassable()) {
                 x = newX;
                 step();
             }
@@ -116,8 +123,13 @@ public class Mobile {
     public void goWest(int steps) {
         if (x > 0) {
             Cell[][] cells = Globals.WORLD.getCurrentScreen().getCells();
-            int newX = x - Math.abs(steps);
-            if (cells[newX][y].isPassable()) {
+            double newX = x - Math.abs(steps*speed);
+            
+            if(newX < 0){
+                newX = 0;
+            }
+            
+            if (cells[(int)Math.floor(newX)][(int)Math.floor(y)].isPassable()) {
                 x = newX;
                 step();
             }
