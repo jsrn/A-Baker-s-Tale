@@ -1,3 +1,8 @@
+26th April, 2013
+----------------
+
+Revisiting this project after a few weeks away. I've implemented (ugly) spriting for player movement, and basic item interaction. Currently maps/items are stored in json format, so it's quite simple to load new layouts.
+
 20th March, 2013
 ----------------
 
@@ -9,7 +14,7 @@ The end result should hopefully be a functioning top down RPG in the style of FF
 
 Current objectives:
 
-Walking animation/sprites for player character
+- [ ] Walking animation/sprites for player character
 - [ ] Map transitions
 - [ ] Item interaction
 - [ ] Event scripting
