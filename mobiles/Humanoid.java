@@ -2,10 +2,6 @@ package mobiles;
 
 import java.util.LinkedList;
 
-/**
- *
- * @author James
- */
 public class Humanoid extends Mobile {
 
     public Humanoid(){

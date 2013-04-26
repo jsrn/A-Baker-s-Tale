@@ -15,7 +15,7 @@
                     "tile": tile_boulder1,
                     "passable": 0
                 },
-{
+                {
                     "x": 2,
                     "y": 2,
                     "tile": tile_boulder1,
