@@ -1,6 +1,5 @@
 package mobiles;
 
-import abakerstale.Constants;
 import abakerstale.Globals;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -18,7 +17,7 @@ public class Mobile {
     private boolean blessed, alive;
     private LinkedList<String> bodyparts = new LinkedList();
     private int lastStep = 1;
-    private double speed = 0.2;
+    private double speed = 0.28;
 
     public Mobile() {
     }
