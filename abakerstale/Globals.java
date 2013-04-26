@@ -9,5 +9,5 @@ public class Globals {
     public static World WORLD;
     public static Player PLAYER;
     
-    public static int [] pressedKeys = new int[255];
+    public static boolean [] pressedKeys = new boolean[255];
 }

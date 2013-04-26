@@ -11,7 +11,7 @@ public class GameJFrame {
     private GamePanel gamePanel;
 
     public GameJFrame() {
-        
+
         JFrame gameJFrame = new JFrame();
 
         gameJFrame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -31,8 +31,15 @@ public class GameJFrame {
         // Set up key listener for player input
         gamePanel.addKeyListener(new java.awt.event.KeyAdapter() {
 
+            //public void keyPressed(java.awt.event.KeyEvent evt) {
+            //    gamePanelKeyPressed(evt);
+            //}
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                gamePanelKeyPressed(evt);
+                Globals.pressedKeys[evt.getKeyCode()] = true;
+            }
+
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                Globals.pressedKeys[evt.getKeyCode()] = false;
             }
         });
 
@@ -123,9 +130,9 @@ public class GameJFrame {
                 newX = playerX - 1;
                 break;
         }
-        
+
         Cell cell = cells[newX][newY];
-        if(cell.hasItem()){
+        if (cell.hasItem()) {
             System.out.println("Interacting with: " + cell.getItem().toString());
         }
 
@@ -141,5 +148,4 @@ public class GameJFrame {
                 break;
         }
     }
-
 }
