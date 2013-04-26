@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class StateMachine {
     Map<String, IState> mStates = new HashMap<String, IState>();
-    IState mCurrentState = null;
+    IState mCurrentState = new EmptyState();
  
     public void Update(float elapsedTime)
     {
