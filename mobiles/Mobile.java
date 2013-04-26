@@ -169,6 +169,5 @@ public class Mobile {
         } else {
             lastStep++;
         }
-        System.out.println(lastStep);
     }
 }
