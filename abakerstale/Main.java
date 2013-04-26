@@ -11,7 +11,7 @@ public class Main {
 
         while (true) {
             try {
-                Thread.sleep(1000);
+                Thread.sleep( 1000 / Constants.FRAMES_PER_SECOND );
                 updateGame();
                 displayGame();
             } catch (InterruptedException ex) {
