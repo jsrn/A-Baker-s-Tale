@@ -1,6 +1,5 @@
 package states;
 
-import abakerstale.Constants;
 import abakerstale.Globals;
 import abakerstale.Keys;
 import java.awt.Graphics;
