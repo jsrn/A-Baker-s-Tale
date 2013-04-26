@@ -6,6 +6,8 @@ public interface IState {
     
     public abstract void Render();
     
+    public abstract void Keypress(int keycode);
+    
     public abstract void OnEnter();
     
     public abstract void OnExit();

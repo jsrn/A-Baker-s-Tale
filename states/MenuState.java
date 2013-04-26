@@ -13,5 +13,8 @@ public class MenuState implements IState {
 
     public void OnExit() {
     }
+
+    public void Keypress(int keycode) {
+    }
     
 }
