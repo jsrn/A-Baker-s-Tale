@@ -16,14 +16,14 @@ public class InventoryState extends MenuState {
         
         Graphics2D g2d = (Graphics2D) frameGraphics;
         // Background
-        g2d.setColor(Constants.GUI_BACKGROUND);
+        g2d.setColor(GUI_BACKGROUND);
         g2d.fillRect(25, 25, 450, 325);
         // Border
-        g2d.setColor(Constants.GUI_BORDER);
+        g2d.setColor(GUI_BORDER);
         g2d.drawRect(25, 25, 450, 325);
         g2d.drawLine(25, 45, 475, 45);
         // Labels
-        g2d.setColor(Constants.GUI_TEXT);
+        g2d.setColor(GUI_TEXT);
         frameGraphics.drawString("Inventory", 30, 40);
         
         Globals.gamePanel.getGraphics().drawImage(frame, 0, 0, null);

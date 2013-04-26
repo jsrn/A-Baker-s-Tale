@@ -1,7 +1,5 @@
 package abakerstale;
 
-import java.awt.Color;
-
 public class Constants {
     // Window modes
     public static final int WINDOW_HEIGHT = 15;
@@ -13,8 +11,4 @@ public class Constants {
     public static final int DIRECTION_EAST = 2;
     public static final int DIRECTION_SOUTH = 3;
     public static final int DIRECTION_WEST = 4;
-    // GUI
-    public static final Color GUI_BACKGROUND = new Color(0, 0, 255, 180);
-    public static final Color GUI_BORDER = new Color(255, 255, 255);
-    public static final Color GUI_TEXT = new Color(255, 255, 255);
 }
