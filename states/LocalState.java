@@ -11,7 +11,7 @@ import java.util.LinkedList;
 import world.Cell;
 
 public class LocalState implements IState {
-    
+
     private LinkedList<TextBox> textBoxes = new LinkedList();
 
     public void Update(float elapsedTime) {
@@ -36,19 +36,19 @@ public class LocalState implements IState {
                 }
             }
         }
-        
+
         for (Iterator<TextBox> it = textBoxes.iterator(); it.hasNext();) {
             TextBox t = it.next();
-            
+
             frameGraphics.setColor(Constants.GUI_BACKGROUND);
             frameGraphics.fillRect(t.getX(), t.getY(), t.getWidth(), t.getHeight());
-            
+
             frameGraphics.setColor(Constants.GUI_BORDER);
             frameGraphics.drawRect(t.getX(), t.getY(), t.getWidth(), t.getHeight());
-            
+
             frameGraphics.setColor(Constants.GUI_TEXT);
             frameGraphics.drawString(t.getText(), t.getX() + 5, t.getY() + 15);
-            
+
         }
         Globals.gamePanel.getGraphics().drawImage(frame, 0, 0, null);
     }
@@ -62,49 +62,69 @@ public class LocalState implements IState {
     public void Keypress(int keycode) {
         switch (keycode) {
             case Keys.UP:
-                Globals.PLAYER.setDirection(Constants.DIRECTION_NORTH);
-                Globals.PLAYER.goNorth(1);
+                movementKeyPressed(Keys.UP);
                 break;
             case Keys.DOWN:
-                Globals.PLAYER.setDirection(Constants.DIRECTION_SOUTH);
-                Globals.PLAYER.goSouth(1);
+                movementKeyPressed(Keys.DOWN);
                 break;
             case Keys.LEFT:
-                Globals.PLAYER.setDirection(Constants.DIRECTION_WEST);
-                Globals.PLAYER.goWest(1);
+                movementKeyPressed(Keys.LEFT);
                 break;
             case Keys.RIGHT:
-                Globals.PLAYER.setDirection(Constants.DIRECTION_EAST);
-                Globals.PLAYER.goEast(1);
+                movementKeyPressed(Keys.RIGHT);
                 break;
             case Keys.I:
                 Globals.stateMachine.Change("inventorystate");
                 break;
             case Keys.SPACE:
                 actionKeyPressed();
-                Globals.pressedKeys[Keys.SPACE] = false;
                 break;
             case Keys.ENTER:
                 actionKeyPressed();
-                Globals.pressedKeys[Keys.ENTER] = false;
                 break;
             default:
                 System.out.println("Unregistered keycode: " + keycode);
                 break;
         }
     }
-    
-    private void actionKeyPressed(){
-        if(!textBoxes.isEmpty()){
+
+    private void actionKeyPressed() {
+        if (!textBoxes.isEmpty()) {
             textBoxes.removeFirst();
         } else {
             playerAction();
+            
+        }
+        Globals.pressedKeys[Keys.ENTER] = false;
+        Globals.pressedKeys[Keys.SPACE] = false;
+    }
+
+    private void movementKeyPressed(int keycode) {
+        if (textBoxes.isEmpty()) {
+            switch (keycode) {
+                case Keys.UP:
+                    Globals.PLAYER.setDirection(Constants.DIRECTION_NORTH);
+                    Globals.PLAYER.goNorth(1);
+                    break;
+                case Keys.DOWN:
+                    Globals.PLAYER.setDirection(Constants.DIRECTION_SOUTH);
+                    Globals.PLAYER.goSouth(1);
+                    break;
+                case Keys.LEFT:
+                    Globals.PLAYER.setDirection(Constants.DIRECTION_WEST);
+                    Globals.PLAYER.goWest(1);
+                    break;
+                case Keys.RIGHT:
+                    Globals.PLAYER.setDirection(Constants.DIRECTION_EAST);
+                    Globals.PLAYER.goEast(1);
+                    break;
+            }
         }
     }
 
     private void playerAction() {
         Cell facingCell = Globals.PLAYER.getFacingCell();
-        
+
         if (facingCell.hasItem()) {
             System.out.println("Interacting with: " + facingCell.getItem().toString());
             AddTextBox(new TextBox("The quick brown fox"));
