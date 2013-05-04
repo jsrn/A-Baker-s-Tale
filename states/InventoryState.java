@@ -2,6 +2,8 @@ package states;
 
 import abakerstale.Globals;
 import abakerstale.Keys;
+import gui.InventoryItem;
+import gui.InventoryList;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -16,14 +18,21 @@ public class InventoryState extends MenuState {
         Graphics2D g2d = (Graphics2D) frameGraphics;
         // Background
         g2d.setColor(GUI_BACKGROUND);
-        g2d.fillRect(25, 25, 450, 325);
+        g2d.fillRect(0, 0, 600, 400);
         // Border
         g2d.setColor(GUI_BORDER);
-        g2d.drawRect(25, 25, 450, 325);
-        g2d.drawLine(25, 45, 475, 45);
+        g2d.drawLine(0, 25, 600, 25);
         // Labels
         g2d.setColor(GUI_TEXT);
-        frameGraphics.drawString("Inventory", 30, 40);
+        frameGraphics.drawString("Inventory", 5, 15);
+        
+        // Draw inventory list
+        InventoryList iList = new InventoryList(0,25);
+        iList.addItem(new InventoryItem("item 1"));
+        iList.addItem(new InventoryItem("item 2"));
+        iList.addItem(new InventoryItem("item 3"));
+        
+        g2d.drawImage(iList.getFrame(), 0, 26, null);
         
         Globals.gamePanel.getGraphics().drawImage(frame, 0, 0, null);
     }
