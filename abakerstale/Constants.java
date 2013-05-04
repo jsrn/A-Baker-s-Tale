@@ -14,7 +14,10 @@ public class Constants {
     public static final int DIRECTION_SOUTH = 3;
     public static final int DIRECTION_WEST = 4;
     // Game colours
-    public static final Color GUI_BACKGROUND = new Color(0, 0, 255, 180);
+    public static final Color GUI_BACKGROUND = new Color(0, 0, 255, 255);
     public static final Color GUI_BORDER = new Color(255, 255, 255);
     public static final Color GUI_TEXT = new Color(255, 255, 255);
+    // GUI dimensions
+    public static final int INV_ITEM_W = 150;
+    public static final int INV_ITEM_H = 25;
 }
