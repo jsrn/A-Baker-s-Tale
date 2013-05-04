@@ -1,6 +1,7 @@
 package states;
 
 import abakerstale.Globals;
+import gui.TextBox;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,6 +39,6 @@ public class StateMachine {
     }
     
     public void AddTextBox(String s){
-        mCurrentState.AddTextBox(s);
+        mCurrentState.AddTextBox(new TextBox(s));
     }
 }
