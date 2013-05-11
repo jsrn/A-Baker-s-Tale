@@ -190,6 +190,14 @@ public class Mobile {
                 newX = Globals.PLAYER.getX() - 1;
                 break;
         }
+        
+        if(newX < 0 || newX > 19){
+            newX = Globals.PLAYER.getX();
+        }
+        
+        if(newY < 0 || newY > 14){
+            newY = Globals.PLAYER.getY();
+        }
 
         return cells[newX][newY];
     }
