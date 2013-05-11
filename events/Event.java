@@ -1,6 +1,8 @@
 package events;
 
+import abakerstale.Globals;
 import java.util.LinkedList;
+import world.Cell;
 
 public class Event {
     
@@ -42,8 +44,8 @@ public class Event {
     }
     
     public void trigger(){
-        
-        System.out.println("Triggering event!");
+        Cell[][] cells = Globals.WORLD.getCurrentScreen().getCells();
+        cells[13][7].setLayerTwo(11);
     }
     
 }

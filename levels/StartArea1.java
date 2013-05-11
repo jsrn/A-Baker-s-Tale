@@ -67,7 +67,7 @@ public class StartArea1 extends BaseLevel {
         
         Event e = new Event(13, 7);
         e.setTriggerType("playerAction");
-        e.addMessageEvent("The neutrinos, they're... mutating!");
+        e.addMessageEvent("You found a Potion!");
         events.add(e);
         setEvents(events);
     }
