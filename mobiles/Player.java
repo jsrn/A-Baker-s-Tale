@@ -5,9 +5,12 @@ import abakerstale.Globals;
 import abakerstale.Keys;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.LinkedList;
 import javax.imageio.ImageIO;
 
 public class Player extends Humanoid {
+    
+    private LinkedList<String> inventory = new LinkedList();
 
     BufferedImage playerSprites;
     int SOUTH_ROWHEIGHT = 0;
@@ -73,5 +76,13 @@ public class Player extends Humanoid {
             offset = STEP4_OFFSET;
         }
         return offset;
+    }
+
+    public LinkedList<String> getInventory() {
+        return inventory;
+    }
+
+    public void giveItem(String string) {
+        inventory.add(string);
     }
 }

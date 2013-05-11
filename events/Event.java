@@ -46,6 +46,7 @@ public class Event {
     public void trigger(){
         Cell[][] cells = Globals.WORLD.getCurrentScreen().getCells();
         cells[13][7].setLayerTwo(11);
+        Globals.PLAYER.giveItem("Potion");
     }
     
 }

@@ -7,6 +7,8 @@ import gui.InventoryList;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 public class InventoryState extends MenuState {
 
@@ -14,7 +16,7 @@ public class InventoryState extends MenuState {
     public void Render() {
         BufferedImage frame = new BufferedImage(600, 400, BufferedImage.TYPE_INT_ARGB);
         Graphics frameGraphics = frame.getGraphics();
-        
+
         Graphics2D g2d = (Graphics2D) frameGraphics;
         // Background
         g2d.setColor(GUI_BACKGROUND);
@@ -25,15 +27,20 @@ public class InventoryState extends MenuState {
         // Labels
         g2d.setColor(GUI_TEXT);
         frameGraphics.drawString("Inventory", 5, 15);
-        
+
         // Draw inventory list
-        InventoryList iList = new InventoryList(0,25);
-        iList.addItem(new InventoryItem("item 1"));
-        iList.addItem(new InventoryItem("item 2"));
-        iList.addItem(new InventoryItem("item 3"));
-        
-        g2d.drawImage(iList.getFrame(), 0, 26, null);
-        
+        LinkedList<String> inventory = Globals.PLAYER.getInventory();
+        if (!inventory.isEmpty()) {
+            InventoryList iList = new InventoryList(0, 25);
+
+            for (Iterator<String> it = Globals.PLAYER.getInventory().iterator(); it.hasNext();) {
+                String string = it.next();
+                iList.addItem(new InventoryItem(string));
+            }
+
+            g2d.drawImage(iList.getFrame(), 0, 26, null);
+        }
+
         Globals.gamePanel.getGraphics().drawImage(frame, 0, 0, null);
     }
 

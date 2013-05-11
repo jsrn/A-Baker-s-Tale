@@ -1,10 +1,8 @@
 package world;
 
 import events.Event;
-import java.awt.image.BufferedImage;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
 import levels.BaseLevel;
 
 public class Screen {
