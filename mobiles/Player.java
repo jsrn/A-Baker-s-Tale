@@ -2,6 +2,7 @@ package mobiles;
 
 import abakerstale.Constants;
 import abakerstale.Globals;
+import abakerstale.Keys;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import javax.imageio.ImageIO;
@@ -13,7 +14,6 @@ public class Player extends Humanoid {
     int EAST_ROWHEIGHT = 26;
     int NORTH_ROWHEIGHT = 52;
     int WEST_ROWHEIGHT = 78;
-    
     int STEP1_OFFSET = 0;
     int STEP2_OFFSET = 26;
     int STEP3_OFFSET = 52;
@@ -55,12 +55,19 @@ public class Player extends Humanoid {
 
     private int getStepOffset() {
         int offset = Globals.frameCount;
+
+        boolean down = Globals.pressedKeys[Keys.DOWN];
+        boolean left = Globals.pressedKeys[Keys.LEFT];
+        boolean right = Globals.pressedKeys[Keys.RIGHT];
+        boolean up = Globals.pressedKeys[Keys.UP];
         
-        if(offset > 0 && offset <= 15){
+        if (!down && !left && !right && !up) {
             offset = STEP1_OFFSET;
-        } else if(offset > 15 && offset <= 30){
+        } else if (offset > 0 && offset <= 15) {
+            offset = STEP1_OFFSET;
+        } else if (offset > 15 && offset <= 30) {
             offset = STEP2_OFFSET;
-        } else if(offset > 30 && offset <= 45){
+        } else if (offset > 30 && offset <= 45) {
             offset = STEP3_OFFSET;
         } else {
             offset = STEP4_OFFSET;
