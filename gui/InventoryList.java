@@ -8,13 +8,15 @@ import java.util.LinkedList;
 
 public class InventoryList {
     
-    private int x, y;
+    private int x, y, selectedIndex;
 
     private LinkedList<InventoryItem> listItems = new LinkedList();
     
     public InventoryList(int x, int y){
         this.x = x;
         this.y = y;
+        
+        selectedIndex = 0;
     }
     
     public void addItem(InventoryItem i){
@@ -32,6 +34,20 @@ public class InventoryList {
             count++;
         }
         return frame;
+    }
+    
+    public void moveSelectUp(){
+        selectedIndex -= 1;
+        if(selectedIndex < 0){
+            selectedIndex = 0;
+        }
+    }
+    
+    public void moveSelectDown(){
+        selectedIndex++;
+        if(selectedIndex >= listItems.size()){
+            selectedIndex = listItems.size() - 1;
+        }
     }
     
 }

@@ -10,14 +10,34 @@ public class StaticTiles {
     public BufferedImage GRASS1;
     public BufferedImage BOULDER1;
     public BufferedImage SWAYINGGRASS1;
+    public BufferedImage WOODENCHEST1;
+    public BufferedImage HORIZONTALWOODENFENCE1;
+    public BufferedImage VERTICALWOODENFENCE1;
+    public BufferedImage TILESET_OUTSIDE1;
 
     public StaticTiles() {
         try {
-            GRASS1 = ImageIO.read(new File("src/art/tile_grass1.png"));
-            BOULDER1 = ImageIO.read(new File("src/art/tile_boulder1.png"));
+            TILESET_OUTSIDE1 = ImageIO.read(new File("src/art/tileset_outside1.png"));
+            GRASS1 = spriteFromTileset(0, 0);
+            BOULDER1 = spriteFromTileset(4,2);
             SWAYINGGRASS1 = ImageIO.read(new File("src/art/sprites_swaying_grass_1.png"));
+            WOODENCHEST1 = spriteFromTileset(0,3);
+            HORIZONTALWOODENFENCE1 = spriteFromTileset(1, 1);
+            VERTICALWOODENFENCE1 = spriteFromTileset(0, 1);
         } catch (IOException ex) {
             System.err.println("Problem loading art asset.");
         }
+    }
+
+    private BufferedImage spriteFromTileset(int x, int y){
+        return TILESET_OUTSIDE1.getSubimage(rC(x), rC(y), 25, 25);
+    }
+    
+    private BufferedImage spriteFromTileset(int x, int y, int w, int h){
+        return null;
+    }
+    
+    private int rC(int c){
+        return 25*c + c;
     }
 }
