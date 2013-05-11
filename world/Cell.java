@@ -1,5 +1,6 @@
 package world;
 
+import abakerstale.Globals;
 import abakerstale.TileMap;
 import java.awt.image.BufferedImage;
 import tiles.BaseTile;
@@ -36,15 +37,13 @@ public class Cell {
     }
 
     public BufferedImage getLayerOneImage() {
-        BaseTile l1 = TileMap.layerOne[layer1];
-        BufferedImage l1i = l1.getTile();
-        return l1i;
+        BaseTile l1 = Globals.TILEMAP.getTile(layer1);
+        return l1.getTile();
     }
     
      public BufferedImage getLayerTwoImage() {
-        BaseTile l2 = TileMap.layerTwo[layer2];
-        BufferedImage l2i = l2.getTile();  
-        return l2i;
+        BaseTile l2 = Globals.TILEMAP.getTile(layer2);
+        return l2.getTile();
     }
 
     public void setPassable(boolean p) {
