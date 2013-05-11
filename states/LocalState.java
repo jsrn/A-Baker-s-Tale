@@ -25,7 +25,10 @@ public class LocalState implements IState {
         for (int x = 0; x < 20; x++) {
             for (int y = 0; y < 15; y++) {
 
-                frameGraphics.drawImage(cells[x][y].getImage(), x * tilewidth, y * tilewidth, null);
+                frameGraphics.drawImage(cells[x][y].getLayerOneImage(), x * tilewidth, y * tilewidth, null);
+                if (cells[x][y].layer2 > 0) {
+                    frameGraphics.drawImage(cells[x][y].getLayerTwoImage(), x * tilewidth, y * tilewidth, null);
+                }
 
                 if (cells[x][y].hasItem()) {
                     frameGraphics.drawImage(cells[x][y].getItem().getImage(), x * tilewidth, y * tilewidth, null);
@@ -93,7 +96,7 @@ public class LocalState implements IState {
             textBoxes.removeFirst();
         } else {
             playerAction();
-            
+
         }
         Globals.pressedKeys[Keys.ENTER] = false;
         Globals.pressedKeys[Keys.SPACE] = false;
