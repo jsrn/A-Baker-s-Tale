@@ -15,6 +15,7 @@ public class TileMap {
     public BufferedImage BOULDER1;
     public BufferedImage SWAYINGGRASS1;
     public BufferedImage WOODENCHEST1;
+    public BufferedImage WOODENCHESTOPEN1;
     public BufferedImage HORIZONTALWOODENFENCE1;
     public BufferedImage VERTICALWOODENFENCE1;
     public BufferedImage TILESET_OUTSIDE1;
@@ -36,6 +37,7 @@ public class TileMap {
             SWWOODENFENCECORNER = spriteFromTileset(4, 1);
             SEWOODENFENCECORNER = spriteFromTileset(5, 1);
             NEWOODENFENCECORNER = spriteFromTileset(3, 1);
+            WOODENCHESTOPEN1 = spriteFromTileset(1, 3);
         } catch (IOException ex) {
             System.err.println("Problem loading art asset.");
         }
@@ -51,6 +53,7 @@ public class TileMap {
         TILESET.put(8, new StaticTile(SWWOODENFENCECORNER));
         TILESET.put(9, new StaticTile(SEWOODENFENCECORNER));
         TILESET.put(10, new StaticTile(NEWOODENFENCECORNER));
+        TILESET.put(11, new StaticTile(WOODENCHESTOPEN1));
     }
 
     private BufferedImage spriteFromTileset(int x, int y) {
