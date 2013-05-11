@@ -47,8 +47,12 @@ public class InventoryState extends MenuState {
     @Override
     public void Keypress(int keycode) {
         switch (keycode) {
-            case Keys.ESC: // up
+            case Keys.ESC:
                 Globals.stateMachine.Change("localmap");
+                break;
+            case Keys.I:
+                Globals.stateMachine.Change("localmap");
+                Globals.pressedKeys[Keys.I] = false;
                 break;
             default:
                 System.out.println("Unregistered keycode: " + keycode);

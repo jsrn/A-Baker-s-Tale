@@ -75,6 +75,7 @@ public class LocalState implements IState {
                 break;
             case Keys.I:
                 Globals.stateMachine.Change("inventorystate");
+                Globals.pressedKeys[Keys.I] = false;
                 break;
             case Keys.SPACE:
                 actionKeyPressed();
