@@ -16,4 +16,6 @@ public class Globals {
     
     public static StateMachine stateMachine;
     
+    public static int frameCount = 1;
+    
 }
