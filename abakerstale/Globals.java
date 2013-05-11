@@ -12,6 +12,8 @@ public class Globals {
     
     public static boolean [] pressedKeys = new boolean[255];
     
+    public static StaticTiles staticAssets = new StaticTiles();
+    
     public static JPanel gamePanel;
     
     public static StateMachine stateMachine;
