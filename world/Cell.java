@@ -1,121 +1,57 @@
 package world;
 
+import abakerstale.TileMap;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
+import tiles.BaseTile;
 
 public class Cell {
+
     BufferedImage image;
     Item item;
     private boolean passable = true;
-    
-    public Cell(){
-        item = null;
-        
-        try {
-            image = ImageIO.read(new File("src/art/tile_grass1.png"));
-        } catch (IOException ex) {
-            System.out.println("Failed loading image.");
-        }
-    }
-    
-    public boolean hasItem(){
-        return item != null;
-    }
-    
-    public void addItem(Item item){
-        this.item = item;
-    }
-    
-    public Item getItem(){
-        return item;
-    }
-    
-    public BufferedImage getImage(){
-        return image;
-    }
-    
-    public void setPassable(boolean p){
-        passable = p;
-    }
-    
-    public boolean isPassable(){
-        return passable;
-    }
-       
-}
-
-
-/*
- * package world;
-
-import java.util.Iterator;
-import java.util.LinkedList;
-import mobiles.Mobile;
-import mobiles.Player;
-import playerstuff.Item;
-
-/**The world is made of cells. Each cell contains important data about itself.
- * The cell class is extended by different types of cell.
- 
-public class Cell {
-
-    private int x, y;
-    private boolean passable;
-    private LinkedList<Mobile> inhabitants;
-    private LinkedList<Item> items;
-    private String rep = " ";
+    public int layer1, layer2;
 
     public Cell() {
-        inhabitants = new LinkedList();
-        items = new LinkedList();
+        item = null;
     }
 
-    public boolean hasPlayer() {
-        for (Iterator<Mobile> it = inhabitants.iterator(); it.hasNext();) {
-            Mobile mobile = it.next();
-            if (mobile instanceof Player) {
-                return true;
-            }
-        }
-        return false;
+    public void setLayerOne(int l1) {
+        layer1 = l1;
+    }
+
+    public void setLayerTwo(int l2) {
+        layer2 = l2;
+    }
+
+    public boolean hasItem() {
+        return item != null;
+    }
+
+    public void addItem(Item item) {
+        this.item = item;
     }
 
     public Item getItem() {
-        if (items.isEmpty()) {
-            return new Item("Blank item",1,"i");
-        } else {
-            return items.getFirst();
-        }
+        return item;
     }
 
-    public String getRep() {
-        if (inhabitants.isEmpty()) {
-            if (items.isEmpty()) {
-                return rep;
-            } else {
-                return items.getFirst().getRep();
-            }
-
-        } else {
-            return inhabitants.getFirst().getRep();
-        }
+    public BufferedImage getLayerOneImage() {
+        BaseTile l1 = TileMap.layerOne[layer1];
+        BufferedImage l1i = l1.getTile();
+        return l1i;
+    }
+    
+     public BufferedImage getLayerTwoImage() {
+        BaseTile l2 = TileMap.layerTwo[layer2];
+        BufferedImage l2i = l2.getTile();  
+        return l2i;
     }
 
-    public void addMobile(Mobile m) {
-        inhabitants.add(m);
+    public void setPassable(boolean p) {
+        passable = p;
     }
 
-    public void addItem(Item i) {
-        items.add(i);
-    }
-
-    void removeInhabitant(Mobile m) {
-        inhabitants.remove(m);
+    public boolean isPassable() {
+        return passable;
     }
 }
-
- * 
- * 
- */
