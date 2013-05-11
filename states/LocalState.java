@@ -3,6 +3,7 @@ package states;
 import abakerstale.Constants;
 import abakerstale.Globals;
 import abakerstale.Keys;
+import events.Event;
 import gui.TextBox;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
@@ -28,10 +29,6 @@ public class LocalState implements IState {
                 frameGraphics.drawImage(cells[x][y].getLayerOneImage(), x * tilewidth, y * tilewidth, null);
                 if (cells[x][y].layer2 > 0) {
                     frameGraphics.drawImage(cells[x][y].getLayerTwoImage(), x * tilewidth, y * tilewidth, null);
-                }
-
-                if (cells[x][y].hasItem()) {
-                    frameGraphics.drawImage(cells[x][y].getItem().getImage(), x * tilewidth, y * tilewidth, null);
                 }
 
                 if (x == Globals.PLAYER.getX() && y == Globals.PLAYER.getY()) {
@@ -128,11 +125,16 @@ public class LocalState implements IState {
     private void playerAction() {
         Cell facingCell = Globals.PLAYER.getFacingCell();
 
-        if (facingCell.hasItem()) {
-            System.out.println("Interacting with: " + facingCell.getItem().toString());
-            AddTextBox(new TextBox("The quick brown fox"));
+        if(facingCell.hasEvent()){
+            Event e = facingCell.getEvent();
+            if(e.getTriggerType().matches("playerAction")){
+                for (Iterator<String> it = e.getMessages().iterator(); it.hasNext();) {
+                    String s = it.next();
+                    textBoxes.add(new TextBox(s));
+                }
+                e.trigger();
+            }
         }
-
     }
 
     public void AddTextBox(TextBox t) {

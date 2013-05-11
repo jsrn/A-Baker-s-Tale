@@ -1,6 +1,11 @@
 package levels;
 
+import events.Event;
+import java.util.LinkedList;
+
 public class StartArea1 extends BaseLevel {
+    
+    LinkedList<Event> events = new LinkedList();
 
     public StartArea1() {
         int[] layer1 = {
@@ -59,5 +64,11 @@ public class StartArea1 extends BaseLevel {
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
         };
         setPassableLayer(passable);
+        
+        Event e = new Event(13, 7);
+        e.setTriggerType("playerAction");
+        e.addMessageEvent("The neutrinos, they're... mutating!");
+        events.add(e);
+        setEvents(events);
     }
 }

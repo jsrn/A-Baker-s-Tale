@@ -47,7 +47,9 @@ public class Main {
         Globals.gamePanel.addKeyListener(new java.awt.event.KeyAdapter() {
 
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Globals.pressedKeys[evt.getKeyCode()] = true;
+                if(!Keys.isDirection(evt.getKeyCode()) || (Keys.isDirection(evt.getKeyCode()) && Keys.directionKeyUniqueness())){
+                    Globals.pressedKeys[evt.getKeyCode()] = true;
+                }
             }
 
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -60,6 +62,8 @@ public class Main {
         gameJFrame.setLocationRelativeTo(null);
         gameJFrame.setVisible(true);
     }
+    
+   
 
     public static void main(String[] args) {
         new Main();

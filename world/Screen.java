@@ -1,6 +1,9 @@
 package world;
 
+import events.Event;
+import java.awt.image.BufferedImage;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import levels.BaseLevel;
 
@@ -13,6 +16,7 @@ public class Screen {
         int [] layer1 = level.getLayerOne();
         int [] layer2 = level.getLayerTwo();
         int [] passables = level.getPassableLayer();
+        LinkedList<Event> events = level.getEvents();
         
         int count = 0;
    
@@ -26,15 +30,12 @@ public class Screen {
                 count++;
             }
         }
-    }
-
-    public boolean addItemTile(Item item, int x, int y) {
-        if (cells[x][y].hasItem()) {
-            return false;
-        } else {
-            cells[x][y].addItem(item);
-            return true;
+        
+        for (Iterator<Event> it = events.iterator(); it.hasNext();) {
+            Event event = it.next();
+            cells[event.getX()][event.getY()].addEvent(event);
         }
+        
     }
 
     public Cell[][] getCells() {

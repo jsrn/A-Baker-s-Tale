@@ -1,19 +1,18 @@
 package world;
 
 import abakerstale.Globals;
-import abakerstale.TileMap;
+import events.Event;
 import java.awt.image.BufferedImage;
 import tiles.BaseTile;
 
 public class Cell {
 
     BufferedImage image;
-    Item item;
     private boolean passable = true;
     public int layer1, layer2;
+    private Event event = null;
 
     public Cell() {
-        item = null;
     }
 
     public void setLayerOne(int l1) {
@@ -22,18 +21,6 @@ public class Cell {
 
     public void setLayerTwo(int l2) {
         layer2 = l2;
-    }
-
-    public boolean hasItem() {
-        return item != null;
-    }
-
-    public void addItem(Item item) {
-        this.item = item;
-    }
-
-    public Item getItem() {
-        return item;
     }
 
     public BufferedImage getLayerOneImage() {
@@ -52,5 +39,17 @@ public class Cell {
 
     public boolean isPassable() {
         return passable;
+    }
+    
+    public void addEvent(Event e){
+        event = e;
+    }
+    
+    public boolean hasEvent(){
+        return event != null;
+    }
+
+    public Event getEvent() {
+        return event;
     }
 }
