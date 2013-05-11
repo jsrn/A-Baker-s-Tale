@@ -11,6 +11,7 @@ public class Main {
 
     public Main() {
         Globals.WORLD = new World();
+        Globals.TILEMAP = new TileMap();
         
         Globals.stateMachine = new StateMachine();
         Globals.stateMachine.Add("localmap", new LocalState());
