@@ -1,6 +1,7 @@
 package world;
 
 import abakerstale.Globals;
+import levels.StartArea1;
 import mobiles.Player;
 
 public class World {
@@ -8,9 +9,9 @@ public class World {
     private Screen currentScreen;
     
     public World(){
-        Globals.PLAYER = new Player(1, 0, 0);
+        Globals.PLAYER = new Player(1, 1, 1);
         
-        Screen screen = new Screen("start_area1");
+        Screen screen = new Screen(new StartArea1());
         
         currentScreen = screen;
     }
