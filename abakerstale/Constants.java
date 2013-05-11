@@ -15,6 +15,7 @@ public class Constants {
     public static final int DIRECTION_WEST = 4;
     // Game colours
     public static final Color GUI_BACKGROUND = new Color(0, 0, 255, 255);
+    public static final Color GUI_BACKGROUND_SELECTED = new Color(20, 20, 255, 255);
     public static final Color GUI_BORDER = new Color(255, 255, 255);
     public static final Color GUI_TEXT = new Color(255, 255, 255);
     // GUI dimensions
