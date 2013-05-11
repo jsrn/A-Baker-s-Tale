@@ -11,6 +11,11 @@ public class StateMachine {
  
     public void Update(float elapsedTime)
     {
+        Globals.frameCount++;
+        if(Globals.frameCount > 60){
+            Globals.frameCount = 1;
+        }
+        
         Keypress();
         mCurrentState.Update(elapsedTime);
     }
