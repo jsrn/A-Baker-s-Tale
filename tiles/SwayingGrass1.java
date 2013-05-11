@@ -18,7 +18,7 @@ public class SwayingGrass1 extends BaseTile {
             offset = 78;
         }
             
-        return Globals.staticAssets.SWAYINGGRASS1.getSubimage(offset, 0, 25, 25);
+        return Globals.TILEMAP.SWAYINGGRASS1.getSubimage(offset, 0, 25, 25);
     }
     
 }
