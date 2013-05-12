@@ -136,7 +136,9 @@ public class LocalState implements IState {
         if(facingCell.hasEvent()){
             EventChain e = facingCell.getEvent();
             if(e.getTriggerType().matches("playerAction")){
-                e.run();
+                Thread thr1 = new Thread(e);
+                thr1.start();
+                //e.run();
             }
         }
     }
