@@ -1,7 +1,6 @@
 package world;
 
 import abakerstale.Globals;
-import events.Event;
 import events.EventChain;
 import java.awt.image.BufferedImage;
 import tiles.BaseTile;
