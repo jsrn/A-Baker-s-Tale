@@ -1,11 +1,13 @@
 package levels;
 
-import events.Event;
+import events.AddItemEvent;
+import events.EventChain;
+import events.TextBoxEvent;
 import java.util.LinkedList;
 
 public class StartArea1 extends BaseLevel {
     
-    LinkedList<Event> events = new LinkedList();
+    LinkedList<EventChain> events = new LinkedList();
 
     public StartArea1() {
         int[] layer1 = {
@@ -65,10 +67,13 @@ public class StartArea1 extends BaseLevel {
         };
         setPassableLayer(passable);
         
-        Event e = new Event(13, 7);
+        EventChain e = new EventChain(13, 7);
+        e.addEvent(new AddItemEvent("Potion", 1));
+        e.addEvent(new TextBoxEvent("You found a Potion!"));
+        e.addEvent(new TextBoxEvent("Yeeeeeh."));
         e.setTriggerType("playerAction");
-        e.addMessageEvent("You found a Potion!");
         events.add(e);
+                
         setEvents(events);
     }
 }
