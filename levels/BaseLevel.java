@@ -1,6 +1,7 @@
 package levels;
 
 import events.Event;
+import events.EventChain;
 import java.util.LinkedList;
 
 public class BaseLevel {
@@ -8,13 +9,13 @@ public class BaseLevel {
     private int[] layer1;
     private int[] layer2;
     private int[] passable;
-    private LinkedList<Event> events;
+    private LinkedList<EventChain> events;
     
-    public LinkedList<Event> getEvents(){
+    public LinkedList<EventChain> getEvents(){
         return events;
     }
     
-    public void setEvents(LinkedList<Event> e){
+    public void setEvents(LinkedList<EventChain> e){
         events = e;
     }
     
