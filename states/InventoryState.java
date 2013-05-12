@@ -51,9 +51,13 @@ public class InventoryState implements IState {
         g2d.drawImage(Globals.TILEMAP.CURRENCYLARGE, 400, 0, null);
         
         // Draw party
+        int count = 0;
         for (Iterator<PartyMember> it = Globals.PARTY.getParty().iterator(); it.hasNext();) {
             PartyMember partyMember = it.next();
-            System.out.println(partyMember.getName());
+            g2d.drawString(partyMember.getName(), 240, 45);
+            g2d.drawString("HP: " + partyMember.getHP() + "/" + partyMember.getMaxHP(), 240, 60);
+            g2d.drawString("MP: " + partyMember.getMP() + "/" + partyMember.getMaxMP(), 240, 75);
+            count++;
         
         }
 
