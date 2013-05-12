@@ -9,7 +9,7 @@ import java.util.LinkedList;
 import javax.imageio.ImageIO;
 import world.Cell;
 
-public class Player extends Humanoid {
+public class Player extends Mobile {
     
     private LinkedList<String> inventory = new LinkedList();
 
