@@ -2,6 +2,8 @@ package abakerstale;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import mobiles.Party;
+import mobiles.PartyMember;
 import states.InventoryState;
 import states.LocalState;
 import states.MainMenuState;
@@ -11,15 +13,26 @@ import world.World;
 public class Main {
 
     public Main() {
+        // Create world
         Globals.WORLD = new World();
+        
+        // Init tilemap
         Globals.TILEMAP = new TileMap();
         
+        // Init party
+        Globals.PARTY = new Party();
+        
+        // Create player 
+        PartyMember player = new PartyMember();
+        player.setName("Humphrey");
+        Globals.PARTY.addPartyMember(player);
+        
+        // Init state machine
         Globals.stateMachine = new StateMachine();
         Globals.stateMachine.Add("localmap", new LocalState());
         Globals.stateMachine.Add("mainmenu", new MainMenuState());
         Globals.stateMachine.Add("inventorystate", new InventoryState());
 
-        //Globals.stateMachine.Change("localmap");
         Globals.stateMachine.Change("mainmenu");
 
         setUpGameFrame();

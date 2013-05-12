@@ -7,7 +7,6 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.LinkedList;
 import javax.imageio.ImageIO;
-import world.Cell;
 
 public class Player extends Mobile {
     

@@ -12,6 +12,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.util.Iterator;
 import java.util.LinkedList;
+import mobiles.PartyMember;
 
 public class InventoryState implements IState {
 
@@ -48,6 +49,13 @@ public class InventoryState implements IState {
         
         // Draw status line
         g2d.drawImage(Globals.TILEMAP.CURRENCYLARGE, 400, 0, null);
+        
+        // Draw party
+        for (Iterator<PartyMember> it = Globals.PARTY.getParty().iterator(); it.hasNext();) {
+            PartyMember partyMember = it.next();
+            System.out.println(partyMember.getName());
+        
+        }
 
         Globals.gamePanel.getGraphics().drawImage(frame, 0, 0, null);
     }

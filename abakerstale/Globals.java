@@ -1,6 +1,7 @@
 package abakerstale;
 
 import javax.swing.JPanel;
+import mobiles.Party;
 import mobiles.Player;
 import states.StateMachine;
 import world.World;
@@ -20,5 +21,7 @@ public class Globals {
     public static int frameCount = 1;
     
     public static TileMap TILEMAP;
+    
+    public static Party PARTY;
     
 }
