@@ -17,8 +17,6 @@ public class InventoryItem {
         Graphics g = frame.getGraphics();
         g.setColor(Constants.GUI_BACKGROUND);
         g.fillRect(0, 0, Constants.INV_ITEM_W, Constants.INV_ITEM_H);
-        g.setColor(Constants.GUI_BORDER);
-        g.drawRect(0, 0, Constants.INV_ITEM_W-1, Constants.INV_ITEM_H-1);
         g.setColor(Constants.GUI_TEXT);
         g.drawString(name, 5, 17);
         return frame;
