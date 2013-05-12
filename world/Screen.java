@@ -1,6 +1,5 @@
 package world;
 
-import events.Event;
 import events.EventChain;
 import java.util.Iterator;
 import java.util.LinkedList;
