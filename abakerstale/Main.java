@@ -27,6 +27,21 @@ public class Main {
         player.setName("Humphrey");
         Globals.PARTY.addPartyMember(player);
         
+        PartyMember p2 = new PartyMember();
+        p2.setName("Bert");
+        p2.setPortraitID(2);
+        Globals.PARTY.addPartyMember(p2);
+        
+        PartyMember p3 = new PartyMember();
+        p3.setName("A");
+        p3.setPortraitID(3);
+        Globals.PARTY.addPartyMember(p3);
+        
+        PartyMember p4 = new PartyMember();
+        p4.setName("B");
+        p4.setPortraitID(4);
+        Globals.PARTY.addPartyMember(p4);
+        
         // Init state machine
         Globals.stateMachine = new StateMachine();
         Globals.stateMachine.Add("localmap", new LocalState());

@@ -1,5 +1,6 @@
 package mobiles;
 
+import abakerstale.Globals;
 import java.awt.image.BufferedImage;
 import java.util.LinkedList;
 
@@ -14,6 +15,7 @@ public class PartyMember {
     private String name = "PartyMember";
     private LinkedList<StatusEffect> statusEffects = new LinkedList();
     private BufferedImage face;
+    private int portraitID = 1;
     
     public PartyMember(){
         
@@ -45,6 +47,14 @@ public class PartyMember {
     
     public int getLVL(){
         return level;
+    }
+    
+    public void setPortraitID(int id){
+        this.portraitID = id;
+    }
+    
+    public BufferedImage getPortrait(){
+        return Globals.TILEMAP.PORTRAITS.getSubimage((portraitID-1)*49, 0, 50, 50);
     }
     
 }

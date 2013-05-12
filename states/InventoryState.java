@@ -53,17 +53,17 @@ public class InventoryState implements IState {
         
         // Draw party
         int count = 0;
+        int yOffset = 60;
         for (Iterator<PartyMember> it = Globals.PARTY.getParty().iterator(); it.hasNext();) {
             PartyMember pM = it.next();
-            g2d.drawString(pM.getName(), 220, 45);
-            g2d.drawString("HP: " + pM.getHP() + "/" + pM.getMaxHP(), 220, 60);
-            g2d.drawString("MP: " + pM.getMP() + "/" + pM.getMaxMP(), 220, 75);
+            g2d.drawString(pM.getName(), 220, count*yOffset + 45);
+            g2d.drawString("HP: " + pM.getHP() + "/" + pM.getMaxHP(), 220, count*yOffset + 60);
+            g2d.drawString("MP: " + pM.getMP() + "/" + pM.getMaxMP(), 220, count*yOffset + 75);
             
-            g2d.drawString("LVL: " + pM.getLVL(), 400, 60);
-            g2d.drawString("NXT: " + 123, 400, 75);
-            g2d.drawImage(Globals.TILEMAP.PORTRAITS.getSubimage(0, 0, 50, 50), 155, 35, null);
+            g2d.drawString("LVL: " + pM.getLVL(), 400, count*yOffset + 60);
+            g2d.drawString("NXT: " + 123, 400, count*yOffset + 75);
+            g2d.drawImage(pM.getPortrait(), 155, count*yOffset + 35, null);
             count++;
-        
         }
 
         Globals.gamePanel.getGraphics().drawImage(frame, 0, 0, null);
