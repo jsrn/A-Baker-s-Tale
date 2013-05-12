@@ -3,7 +3,7 @@ package states;
 import abakerstale.Constants;
 import abakerstale.Globals;
 import abakerstale.Keys;
-import events.Event;
+import events.EventChain;
 import gui.TextBox;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
@@ -120,6 +120,13 @@ public class LocalState implements IState {
                     Globals.PLAYER.goEast(1);
                     break;
             }
+            Cell playersCell = Globals.PLAYER.getCurrentCell();
+            if(playersCell.hasEvent()){
+                EventChain e = playersCell.getEvent();
+                if(e.getTriggerType().matches("playerStep")){
+                    e.run();
+                }
+            }
         }
     }
 
@@ -127,13 +134,9 @@ public class LocalState implements IState {
         Cell facingCell = Globals.PLAYER.getFacingCell();
 
         if(facingCell.hasEvent()){
-            Event e = facingCell.getEvent();
+            EventChain e = facingCell.getEvent();
             if(e.getTriggerType().matches("playerAction")){
-                for (Iterator<String> it = e.getMessages().iterator(); it.hasNext();) {
-                    String s = it.next();
-                    textBoxes.add(new TextBox(s));
-                }
-                e.trigger();
+                e.run();
             }
         }
     }
