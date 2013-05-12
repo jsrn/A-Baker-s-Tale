@@ -11,6 +11,14 @@ public class Event {
     public void trigger() {
         System.err.println("This method should only be called from the overiding class.");
     }
+    
+    public void setPreDelay(int d){
+        preDelay = d;
+    }
+    
+    public void setPostDelay(int d){
+        postDelay = d;
+    }
 
     public void preDelay() {
         try {
