@@ -26,5 +26,21 @@ public class PartyMember {
     public String getName(){
         return name;
     }
+
+    public int getHP() {
+        return hitPoints;
+    }
+
+    public int getMaxHP() {
+        return maxHitPoints;
+    }
+    
+      public int getMP() {
+        return manaPoints;
+    }
+
+    public int getMaxMP() {
+        return maxManaPoints;
+    }
     
 }
