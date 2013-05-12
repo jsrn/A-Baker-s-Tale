@@ -3,7 +3,7 @@ package events;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-public class EventChain {
+public class EventChain implements Runnable{
 
     LinkedList<Event> eventChain = new LinkedList();
     private int x, y;
