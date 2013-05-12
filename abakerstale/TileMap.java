@@ -36,6 +36,7 @@ public class TileMap {
     public BufferedImage DOORWAY2;
     public BufferedImage THATCHEDOVERHANG1;
     public BufferedImage WINDOW1;
+    public BufferedImage CURRENCYLARGE;
 
     public TileMap() {
         try {
@@ -63,6 +64,7 @@ public class TileMap {
             DOORWAY2 = spriteFromTileset(4, 5);
             THATCHEDOVERHANG1 = spriteFromTileset(6, 1);
             WINDOW1 = spriteFromTileset(0,7);
+            CURRENCYLARGE = spriteFromTileset(0, 8);
         } catch (IOException ex) {
             System.err.println("Problem loading art asset.");
         }
