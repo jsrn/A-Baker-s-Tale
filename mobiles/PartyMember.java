@@ -43,4 +43,8 @@ public class PartyMember {
         return maxManaPoints;
     }
     
+    public int getLVL(){
+        return level;
+    }
+    
 }

@@ -12,6 +12,7 @@ public class TileMap {
     
     // Other Art Assets
     public BufferedImage MAINMENU;
+    public BufferedImage PORTRAITS;
 
     // Mapped tiles
     Map<Integer, BaseTile> TILESET = new HashMap();
@@ -42,6 +43,7 @@ public class TileMap {
         try {
             // Other art assets
             MAINMENU = ImageIO.read(new File("src/art/mainmenu.png"));
+            PORTRAITS = ImageIO.read(new File("src/art/48x48portraits.png"));
             // Mapped tiles
             TILESET_OUTSIDE1 = ImageIO.read(new File("src/art/tileset_outside1.png"));
             GRASS1 = spriteFromTileset(0, 0);

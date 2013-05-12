@@ -3,6 +3,7 @@ package states;
 import abakerstale.Constants;
 import abakerstale.Globals;
 import abakerstale.Keys;
+import abakerstale.TileMap;
 import gui.InventoryItem;
 import gui.InventoryList;
 import gui.TextBox;
@@ -53,10 +54,14 @@ public class InventoryState implements IState {
         // Draw party
         int count = 0;
         for (Iterator<PartyMember> it = Globals.PARTY.getParty().iterator(); it.hasNext();) {
-            PartyMember partyMember = it.next();
-            g2d.drawString(partyMember.getName(), 240, 45);
-            g2d.drawString("HP: " + partyMember.getHP() + "/" + partyMember.getMaxHP(), 240, 60);
-            g2d.drawString("MP: " + partyMember.getMP() + "/" + partyMember.getMaxMP(), 240, 75);
+            PartyMember pM = it.next();
+            g2d.drawString(pM.getName(), 220, 45);
+            g2d.drawString("HP: " + pM.getHP() + "/" + pM.getMaxHP(), 220, 60);
+            g2d.drawString("MP: " + pM.getMP() + "/" + pM.getMaxMP(), 220, 75);
+            
+            g2d.drawString("LVL: " + pM.getLVL(), 400, 60);
+            g2d.drawString("NXT: " + 123, 400, 75);
+            g2d.drawImage(Globals.TILEMAP.PORTRAITS.getSubimage(0, 0, 50, 50), 155, 35, null);
             count++;
         
         }
