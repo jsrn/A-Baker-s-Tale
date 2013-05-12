@@ -1,31 +1,32 @@
 package states;
 
+import abakerstale.Constants;
 import abakerstale.Globals;
 import abakerstale.Keys;
 import gui.InventoryItem;
 import gui.InventoryList;
+import gui.TextBox;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-public class InventoryState extends MenuState {
+public class InventoryState implements IState {
 
-    @Override
     public void Render() {
         BufferedImage frame = new BufferedImage(600, 400, BufferedImage.TYPE_INT_ARGB);
         Graphics frameGraphics = frame.getGraphics();
 
         Graphics2D g2d = (Graphics2D) frameGraphics;
         // Background
-        g2d.setColor(GUI_BACKGROUND);
+        g2d.setColor(Constants.GUI_BACKGROUND);
         g2d.fillRect(0, 0, 600, 400);
         // Border
-        g2d.setColor(GUI_BORDER);
+        g2d.setColor(Constants.GUI_BORDER);
         g2d.drawLine(0, 25, 600, 25);
         // Labels
-        g2d.setColor(GUI_TEXT);
+        g2d.setColor(Constants.GUI_TEXT);
         frameGraphics.drawString("Inventory", 5, 15);
 
         // Draw inventory list
@@ -44,7 +45,6 @@ public class InventoryState extends MenuState {
         Globals.gamePanel.getGraphics().drawImage(frame, 0, 0, null);
     }
 
-    @Override
     public void Keypress(int keycode) {
         switch (keycode) {
             case Keys.ESC:
@@ -58,5 +58,20 @@ public class InventoryState extends MenuState {
                 System.out.println("Unregistered keycode: " + keycode);
                 break;
         }
+    }
+
+    public void Update(float elapsedTime) {
+    }
+
+    public void OnEnter() {
+    }
+
+    public void OnExit() {
+    }
+
+    public void AddTextBox(TextBox t) {
+    }
+
+    public void RemoveTextBox(TextBox t) {
     }
 }
