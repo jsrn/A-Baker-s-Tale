@@ -68,9 +68,11 @@ public class StartArea1 extends BaseLevel {
         setPassableLayer(passable);
         
         EventChain e = new EventChain(13, 7);
+        TextBoxEvent tbe = new TextBoxEvent("Yeeeeh.");
+        tbe.setPostDelay(5000);
+        e.addEvent(tbe);
         e.addEvent(new AddItemEvent("Potion", 1));
         e.addEvent(new TextBoxEvent("You found a Potion!"));
-        e.addEvent(new TextBoxEvent("Yeeeeeh."));
         e.setTriggerType("playerAction");
         events.add(e);
                 
