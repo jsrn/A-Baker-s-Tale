@@ -6,6 +6,7 @@ import abakerstale.Keys;
 import gui.InventoryItem;
 import gui.InventoryList;
 import gui.TextBox;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -25,9 +26,12 @@ public class InventoryState implements IState {
         // Border
         g2d.setColor(Constants.GUI_BORDER);
         g2d.drawLine(0, 25, 600, 25);
+        g2d.drawLine(150, 0, 150, 400);
         // Labels
         g2d.setColor(Constants.GUI_TEXT);
+        g2d.setFont(new Font( "Monospaced", Font.PLAIN, 12));
         frameGraphics.drawString("Inventory", 5, 15);
+        frameGraphics.drawString("Status", 155, 15);
 
         // Draw inventory list
         LinkedList<String> inventory = Globals.PLAYER.getInventory();
@@ -41,6 +45,9 @@ public class InventoryState implements IState {
 
             g2d.drawImage(iList.getFrame(), 0, 26, null);
         }
+        
+        // Draw status line
+        g2d.drawImage(Globals.TILEMAP.CURRENCYLARGE, 400, 0, null);
 
         Globals.gamePanel.getGraphics().drawImage(frame, 0, 0, null);
     }
