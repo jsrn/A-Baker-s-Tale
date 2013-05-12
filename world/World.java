@@ -9,7 +9,7 @@ public class World {
     private Screen currentScreen;
     
     public World(){
-        Globals.PLAYER = new Player(1, 1, 1);
+        Globals.PLAYER = new Player(1, 5, 5);
         
         Screen screen = new Screen(new StartArea1());
         
