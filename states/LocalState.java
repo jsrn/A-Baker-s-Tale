@@ -138,7 +138,6 @@ public class LocalState implements IState {
             if(e.getTriggerType().matches("playerAction")){
                 Thread thr1 = new Thread(e);
                 thr1.start();
-                //e.run();
             }
         }
     }
