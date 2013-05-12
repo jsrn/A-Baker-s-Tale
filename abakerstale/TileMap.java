@@ -31,9 +31,11 @@ public class TileMap {
     public BufferedImage PLASTERWALL1;
     public BufferedImage PLASTERWALL2;
     public BufferedImage PLASTERWALL3;
+    public BufferedImage PLASTERWALL4;
     public BufferedImage DOORWAY1;
     public BufferedImage DOORWAY2;
     public BufferedImage THATCHEDOVERHANG1;
+    public BufferedImage WINDOW1;
 
     public TileMap() {
         try {
@@ -56,9 +58,11 @@ public class TileMap {
             PLASTERWALL1 = spriteFromTileset(0, 5);
             PLASTERWALL2 = spriteFromTileset(1, 5);
             PLASTERWALL3 = spriteFromTileset(2, 5);
+            PLASTERWALL4 = spriteFromTileset(0, 6);
             DOORWAY1 = spriteFromTileset(3, 5);
             DOORWAY2 = spriteFromTileset(4, 5);
             THATCHEDOVERHANG1 = spriteFromTileset(6, 1);
+            WINDOW1 = spriteFromTileset(0,7);
         } catch (IOException ex) {
             System.err.println("Problem loading art asset.");
         }
@@ -82,6 +86,8 @@ public class TileMap {
         TILESET.put(16, new StaticTile(DOORWAY1));
         TILESET.put(17, new StaticTile(THATCHEDOVERHANG1));
         TILESET.put(18, new StaticTile(DOORWAY2));
+        TILESET.put(19, new StaticTile(PLASTERWALL4));
+        TILESET.put(20, new StaticTile(WINDOW1));
     }
 
     private BufferedImage spriteFromTileset(int x, int y) {
