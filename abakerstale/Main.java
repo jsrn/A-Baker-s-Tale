@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import states.InventoryState;
 import states.LocalState;
+import states.MainMenuState;
 import states.StateMachine;
 import world.World;
 
@@ -15,9 +16,11 @@ public class Main {
         
         Globals.stateMachine = new StateMachine();
         Globals.stateMachine.Add("localmap", new LocalState());
+        Globals.stateMachine.Add("mainmenu", new MainMenuState());
         Globals.stateMachine.Add("inventorystate", new InventoryState());
 
-        Globals.stateMachine.Change("localmap");
+        //Globals.stateMachine.Change("localmap");
+        Globals.stateMachine.Change("mainmenu");
 
         setUpGameFrame();
 

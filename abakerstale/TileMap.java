@@ -9,7 +9,11 @@ import javax.imageio.ImageIO;
 import tiles.*;
 
 public class TileMap {
+    
+    // Other Art Assets
+    public BufferedImage MAINMENU;
 
+    // Mapped tiles
     Map<Integer, BaseTile> TILESET = new HashMap();
     public BufferedImage GRASS1;
     public BufferedImage BOULDER1;
@@ -26,6 +30,9 @@ public class TileMap {
 
     public TileMap() {
         try {
+            // Other art assets
+            MAINMENU = ImageIO.read(new File("src/art/mainmenu.png"));
+            // Mapped tiles
             TILESET_OUTSIDE1 = ImageIO.read(new File("src/art/tileset_outside1.png"));
             GRASS1 = spriteFromTileset(0, 0);
             BOULDER1 = spriteFromTileset(4, 2);
