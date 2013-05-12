@@ -171,6 +171,11 @@ public class Mobile {
         }
     }
     
+    public Cell getCurrentCell() {
+        Cell[][] cells = Globals.WORLD.getCurrentScreen().getCells();
+        return cells[getX()][getY()];
+    }
+    
     public Cell getFacingCell(){
         Cell[][] cells = Globals.WORLD.getCurrentScreen().getCells();
 

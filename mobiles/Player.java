@@ -7,6 +7,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.LinkedList;
 import javax.imageio.ImageIO;
+import world.Cell;
 
 public class Player extends Humanoid {
     
@@ -85,4 +86,5 @@ public class Player extends Humanoid {
     public void giveItem(String string) {
         inventory.add(string);
     }
+ 
 }
