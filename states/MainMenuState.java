@@ -49,6 +49,16 @@ public class MainMenuState implements IState {
                 moveSelectionRight();
                 Globals.pressedKeys[Keys.RIGHT] = false;
                 break;
+            case Keys.ENTER:
+                switch(selectedIndex){
+                    case 1:
+                        Globals.stateMachine.Change("localmap");
+                        break;
+                    case 2:
+                        System.err.println("Loading not yet implemented.");
+                        System.exit(1);
+                        break;
+                }  
         }
     }
     
