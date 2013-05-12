@@ -2,6 +2,7 @@ package world;
 
 import abakerstale.Globals;
 import events.Event;
+import events.EventChain;
 import java.awt.image.BufferedImage;
 import tiles.BaseTile;
 
@@ -10,7 +11,7 @@ public class Cell {
     BufferedImage image;
     private boolean passable = true;
     public int layer1, layer2;
-    private Event event = null;
+    private EventChain event = null;
 
     public Cell() {
     }
@@ -41,7 +42,7 @@ public class Cell {
         return passable;
     }
     
-    public void addEvent(Event e){
+    public void addEvent(EventChain e){
         event = e;
     }
     
@@ -49,7 +50,7 @@ public class Cell {
         return event != null;
     }
 
-    public Event getEvent() {
+    public EventChain getEvent() {
         return event;
     }
 }

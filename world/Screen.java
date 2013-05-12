@@ -1,6 +1,7 @@
 package world;
 
 import events.Event;
+import events.EventChain;
 import java.util.Iterator;
 import java.util.LinkedList;
 import levels.BaseLevel;
@@ -14,7 +15,7 @@ public class Screen {
         int [] layer1 = level.getLayerOne();
         int [] layer2 = level.getLayerTwo();
         int [] passables = level.getPassableLayer();
-        LinkedList<Event> events = level.getEvents();
+        LinkedList<EventChain> events = level.getEvents();
         
         int count = 0;
    
@@ -29,8 +30,8 @@ public class Screen {
             }
         }
         
-        for (Iterator<Event> it = events.iterator(); it.hasNext();) {
-            Event event = it.next();
+        for (Iterator<EventChain> it = events.iterator(); it.hasNext();) {
+            EventChain event = it.next();
             cells[event.getX()][event.getY()].addEvent(event);
         }
         
